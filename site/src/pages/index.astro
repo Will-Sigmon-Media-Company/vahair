@@ -30,7 +30,7 @@ const stylists = getHomepageStylists();
         <span class="font-medium">feel beautiful</span>
       </h1>
       <p class="text-4xl md:text-6xl font-light tracking-wide mb-12 animate-fade-up" style="animation-delay: 0.6s; font-family: var(--font-display);">
-        Do it<span class="text-[--color-gold]">.</span>
+        <span class="text-glow-breathe">Do it<span class="text-[--color-gold]">.</span></span>
       </p>
       <div class="animate-fade-up" style="animation-delay: 0.8s;">
         <a href="/book" class="btn btn-primary btn-hero-cta bg-[--color-cream] text-[--color-charcoal] border-[--color-cream] hover:bg-[--color-gold] hover:border-[--color-gold] text-base px-8 py-4">
@@ -46,43 +46,25 @@ const stylists = getHomepageStylists();
     </div>
   </section>
 
-  <!-- Intro Section -->
-  <section class="py-32 px-6">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-        <!-- Text -->
-        <div class="max-w-xl">
-          <div class="divider mb-8" data-reveal></div>
-          <h2 class="display-md mb-8 text-balance" style="font-family: var(--font-display);" data-reveal data-reveal-delay="100">
-            Where beauty meets expertise in the heart of downtown Rolesville
-          </h2>
-          <p class="text-[--color-taupe] text-lg leading-relaxed mb-6" data-reveal data-reveal-delay="200">
-            With over 30 years of combined experience, Virginia and Kim bring artistry, expertise, and genuine care to every client who sits in their chairs.
-          </p>
-          <p class="text-[--color-taupe] text-lg leading-relaxed mb-10" data-reveal data-reveal-delay="300">
-            We believe everyone deserves to express themselves through their hair and leave feeling like the best version of themselves.
-          </p>
-          <a href="/about" class="btn btn-ghost" data-reveal data-reveal-delay="400" data-magnetic>
-            Meet Your Stylists
-          </a>
+  <!-- Social Proof Bar -->
+  <section class="py-12 md:py-16 px-6 bg-[--color-charcoal] text-[--color-cream]">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <p class="text-3xl md:text-4xl font-light mb-1" style="font-family: var(--font-display);">30+</p>
+          <p class="text-sm text-[--color-taupe] uppercase tracking-wider">Years Combined Experience</p>
         </div>
-
-        <!-- Image Grid -->
-        <div class="grid grid-cols-2 gap-4">
-          <div class="img-frame aspect-square bg-[--color-cream-dark] mt-12" data-img-reveal data-tilt="5">
-            <img
-              src="/images/salon.jpg"
-              alt="Virginia Page & Co. Hair Studio"
-              class="w-full h-full object-cover"
-            />
-          </div>
-          <div class="img-frame aspect-square bg-[--color-cream-dark]" data-img-reveal data-tilt="5">
-            <img
-              src="/images/virginia.jpg"
-              alt="Virginia Page Watkins"
-              class="w-full h-full object-cover object-top"
-            />
-          </div>
+        <div>
+          <p class="text-3xl md:text-4xl font-light mb-1" style="font-family: var(--font-display);">3</p>
+          <p class="text-sm text-[--color-taupe] uppercase tracking-wider">Expert Stylists</p>
+        </div>
+        <div>
+          <p class="text-3xl md:text-4xl font-light mb-1 text-[--color-gold]">★★★★★</p>
+          <p class="text-sm text-[--color-taupe] uppercase tracking-wider">5-Star Reviews</p>
+        </div>
+        <div>
+          <p class="text-3xl md:text-4xl font-light mb-1" style="font-family: var(--font-display);">♥</p>
+          <p class="text-sm text-[--color-taupe] uppercase tracking-wider">Downtown Rolesville</p>
         </div>
       </div>
     </div>

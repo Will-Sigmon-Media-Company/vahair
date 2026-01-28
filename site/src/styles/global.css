@@ -564,6 +564,29 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Yellow glow breathe animation for text */
+.text-glow-breathe {
+  animation: textGlowBreathe 3s ease-in-out infinite;
+}
+
+@keyframes textGlowBreathe {
+  0%, 100% {
+    text-shadow:
+      0 2px 8px rgba(0,0,0,0.8),
+      0 4px 24px rgba(0,0,0,0.6),
+      0 0 20px rgba(196, 169, 98, 0.3),
+      0 0 40px rgba(196, 169, 98, 0.2);
+  }
+  50% {
+    text-shadow:
+      0 2px 8px rgba(0,0,0,0.8),
+      0 4px 24px rgba(0,0,0,0.6),
+      0 0 30px rgba(196, 169, 98, 0.6),
+      0 0 60px rgba(196, 169, 98, 0.4),
+      0 0 80px rgba(196, 169, 98, 0.2);
+  }
+}
+
 .btn-outline {
   background: transparent;
   color: var(--color-charcoal);
