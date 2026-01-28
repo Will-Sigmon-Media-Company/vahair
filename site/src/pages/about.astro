@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SmartBookButton from '../components/booking/SmartBookButton.astro';
 ---
 
 <Layout
@@ -58,15 +59,13 @@ import Layout from '../layouts/Layout.astro';
             Proverbs 31:13 — "She selects wool and flax and works with willing hands."
           </p>
 
-          <a
-            href="https://vahair.as.me/?calendarID=7785532"
-            target="_blank"
-            class="btn btn-primary"
-            data-reveal data-reveal-delay="700"
-            data-magnetic
-          >
-            Book with Virginia
-          </a>
+          <div data-reveal data-reveal-delay="700">
+            <SmartBookButton
+              calendarId={7785532}
+              stylistName="Virginia"
+              variant="primary"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -92,19 +91,17 @@ import Layout from '../layouts/Layout.astro';
             Kim and Virginia have been friends for 15 years, sharing not just a profession but a genuine bond. Kim is married to Joe and has one son, Joseph, who is 6 years old.
           </p>
 
-          <a
-            href="https://vahair.as.me/?calendarID=8172243"
-            target="_blank"
-            class="btn btn-primary"
-            data-reveal data-reveal-delay="500"
-            data-magnetic
-          >
-            Book with Kim
-          </a>
+          <div data-reveal data-reveal-delay="500">
+            <SmartBookButton
+              calendarId={8172243}
+              stylistName="Kim"
+              variant="primary"
+            />
+          </div>
         </div>
 
         <!-- Image -->
-        <div class="img-frame aspect-[3/4] bg-[--color-blush] lg:order-2 order-1" data-img-reveal data-tilt="5">
+        <div class="img-frame aspect-square bg-[--color-blush] lg:order-2 order-1" data-img-reveal data-tilt="5">
           <img
             src="/images/kim.jpg"
             alt="Kim Latham"
