@@ -36,7 +36,7 @@ export const STYLISTS: Stylist[] = [
     image: '/images/kim.jpg',
     role: 'Stylist',
     experience: '20 years of experience',
-    imagePosition: 'object-[center_20%]',
+    imagePosition: 'object-center',
     bookingUrl: 'https://vahair.as.me/?calendarID=8172243',
   },
   {

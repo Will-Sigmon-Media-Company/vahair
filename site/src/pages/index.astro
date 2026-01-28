@@ -21,16 +21,16 @@ const stylists = getHomepageStylists();
     </div>
 
     <!-- Content -->
-    <div class="relative z-10 text-center text-white px-6 max-w-5xl" style="text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 4px 24px rgba(0,0,0,0.6);">
-      <p class="text-lg md:text-xl tracking-widest uppercase mb-6 animate-fade-up" style="animation-delay: 0.2s;">
+    <div class="relative z-10 text-center text-white px-6 max-w-5xl">
+      <p class="text-lg md:text-xl tracking-widest uppercase mb-6 animate-fade-up hero-text-shadow" style="animation-delay: 0.2s;">
         Rolesville, NC
       </p>
-      <h1 class="display-xl mb-8 animate-fade-up" style="animation-delay: 0.4s; font-family: var(--font-display);">
+      <h1 class="display-xl mb-6 animate-fade-up hero-text-shadow leading-[0.9]" style="animation-delay: 0.4s; font-family: var(--font-display);">
         <span class="italic font-light">If it makes you</span><br />
         <span class="font-medium">feel beautiful</span>
       </h1>
       <p class="text-4xl md:text-6xl font-light tracking-wide mb-12 animate-fade-up" style="animation-delay: 0.6s; font-family: var(--font-display);">
-        <span class="text-glow-breathe">Do it<span class="text-[--color-gold]">.</span></span>
+        <span class="text-glow-breathe text-[--color-gold]">Do it.</span>
       </p>
       <div class="animate-fade-up" style="animation-delay: 0.8s;">
         <a href="/book" class="btn btn-primary btn-hero-cta bg-[--color-cream] text-[--color-charcoal] border-[--color-cream] hover:bg-[--color-gold] hover:border-[--color-gold] text-base px-8 py-4">
@@ -147,8 +147,8 @@ const stylists = getHomepageStylists();
                 ]}
               />
             </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-[--color-charcoal]/90 via-[--color-charcoal]/30 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-8 text-[--color-cream]">
+            <div class="absolute inset-0 bg-gradient-to-t from-[--color-charcoal] via-[--color-charcoal]/60 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-8 text-[--color-cream]" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">
               <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block">
                 {stylist.role}
               </span>
