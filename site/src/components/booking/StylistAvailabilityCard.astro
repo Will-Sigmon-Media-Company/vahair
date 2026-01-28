@@ -49,10 +49,7 @@ const bookingUrl = `https://vahair.as.me/?calendarID=${id}`;
         alt={fullName}
         class="relative w-16 h-16 rounded-full object-cover object-top border-2 border-white shadow-lg transition-transform duration-300 group-hover:scale-105"
       />
-      <!-- Online indicator -->
-      <span class="absolute bottom-0 right-0 w-4 h-4 bg-green-400 border-2 border-white rounded-full shadow-lg">
-        <span class="absolute inset-0 bg-green-400 rounded-full animate-ping opacity-75"></span>
-      </span>
+      <!-- Note: Removed always-on "online" indicator - was misleading as it didn't reflect actual availability -->
     </div>
 
     <!-- Info -->

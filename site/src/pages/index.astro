@@ -1,26 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import NextSlotBadge from '../components/availability/NextSlotBadge.astro';
+import { getHomepageStylists } from '../lib/data/stylists';
 
-// Stylist data with calendar IDs
-const stylists = [
-  {
-    id: 7785532,
-    name: 'Virginia Page Watkins',
-    role: 'Owner & Stylist',
-    experience: '14 years of experience',
-    image: '/images/virginia.jpg',
-    imagePosition: 'object-top',
-  },
-  {
-    id: 8172243,
-    name: 'Kim Latham',
-    role: 'Stylist',
-    experience: '20 years of experience',
-    image: '/images/kim.jpg',
-    imagePosition: 'object-[center_20%]',
-  },
-];
+// Use centralized stylist data
+const stylists = getHomepageStylists();
 ---
 
 <Layout title="Virginia Page & Co. Hair Studio | Rolesville, NC Hair Salon">
@@ -162,7 +146,7 @@ const stylists = [
             <div class="aspect-square">
               <img
                 src={stylist.image}
-                alt={stylist.name}
+                alt={`${stylist.fullName}, ${stylist.role}`}
                 class:list={[
                   'w-full h-full object-cover transition-transform duration-700 group-hover:scale-105',
                   stylist.imagePosition,
@@ -175,16 +159,18 @@ const stylists = [
                 {stylist.role}
               </span>
               <h3 class="text-3xl mb-2" style="font-family: var(--font-display);">
-                {stylist.name}
+                {stylist.fullName}
               </h3>
               <p class="text-[--color-cream]/70 mb-2">{stylist.experience}</p>
               <NextSlotBadge calendarId={stylist.id} class="mb-4" />
               <a
-                href={`https://vahair.as.me/?calendarID=${stylist.id}`}
+                href={stylist.bookingUrl}
                 target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Book appointment with ${stylist.name} (opens in new window)`}
                 class="btn btn-outline border-[--color-cream] text-[--color-cream] hover:bg-[--color-cream] hover:text-[--color-charcoal]"
               >
-                Book with {stylist.name.split(' ')[0]}
+                Book with {stylist.name}
               </a>
             </div>
           </div>
@@ -256,6 +242,8 @@ const stylists = [
           <a
             href="https://www.google.com/maps/search/?api=1&query=104+South+Main+Street+Rolesville+NC+27571"
             target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Get directions to Virginia Page & Co. on Google Maps (opens in new window)"
             class="btn btn-outline border-[--color-cream] text-[--color-cream] hover:bg-[--color-cream] hover:text-[--color-charcoal]"
           >
             Get Directions
@@ -281,18 +269,18 @@ const stylists = [
 
       <!-- Instagram Feed Placeholder -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-        <a href="https://instagram.com/vahairco" target="_blank" rel="noopener noreferrer" class="aspect-square bg-[--color-cream] overflow-hidden group">
-          <img src="/images/virginia.jpg" alt="Hair styling by Virginia Page & Co." class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        <a href="https://instagram.com/vahairco" target="_blank" rel="noopener noreferrer" class="aspect-square bg-[--color-cream] overflow-hidden group" aria-label="Virginia's precision haircut work on Instagram (opens in new window)">
+          <img src="/images/virginia.jpg" alt="Virginia Page Watkins performing a precision haircut" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
         </a>
-        <a href="https://instagram.com/vahairco" target="_blank" rel="noopener noreferrer" class="aspect-square bg-[--color-cream] overflow-hidden group">
-          <img src="/images/kim.jpg" alt="Hair styling by Virginia Page & Co." class="w-full h-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-110" />
+        <a href="https://instagram.com/vahairco" target="_blank" rel="noopener noreferrer" class="aspect-square bg-[--color-cream] overflow-hidden group" aria-label="Kim's color styling on Instagram (opens in new window)">
+          <img src="/images/kim.jpg" alt="Kim Latham showcasing professional hair color" class="w-full h-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-110" />
         </a>
-        <a href="https://instagram.com/vahairco" target="_blank" rel="noopener noreferrer" class="aspect-square bg-[--color-cream] overflow-hidden group">
-          <img src="/images/salon.jpg" alt="Virginia Page & Co. Hair Studio" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        <a href="https://instagram.com/vahairco" target="_blank" rel="noopener noreferrer" class="aspect-square bg-[--color-cream] overflow-hidden group" aria-label="Our salon interior on Instagram (opens in new window)">
+          <img src="/images/salon.jpg" alt="Inside Virginia Page & Co. Hair Studio in downtown Rolesville" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
         </a>
-        <a href="https://instagram.com/vahairco" target="_blank" rel="noopener noreferrer" class="aspect-square bg-[--color-cream] overflow-hidden group flex items-center justify-center">
+        <a href="https://instagram.com/vahairco" target="_blank" rel="noopener noreferrer" class="aspect-square bg-[--color-cream] overflow-hidden group flex items-center justify-center" aria-label="View more on Instagram (opens in new window)">
           <div class="text-center p-6">
-            <svg class="w-12 h-12 mx-auto mb-4 text-[--color-charcoal]" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="w-12 h-12 mx-auto mb-4 text-[--color-charcoal]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
             </svg>
             <span class="text-sm font-medium text-[--color-charcoal]">View More</span>
@@ -301,7 +289,7 @@ const stylists = [
       </div>
 
       <div class="text-center">
-        <a href="https://instagram.com/vahairco" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-magnetic>
+        <a href="https://instagram.com/vahairco" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-magnetic aria-label="Follow Virginia Page & Co. on Instagram (opens in new window)">
           Follow on Instagram
         </a>
       </div>

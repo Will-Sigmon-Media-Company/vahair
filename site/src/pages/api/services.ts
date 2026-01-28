@@ -16,6 +16,20 @@ import {
   type ApiResponse,
 } from '../../lib/acuity';
 
+// CORS and security headers for API responses
+const corsHeaders = {
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin': 'https://www.vahair.studio',
+  'Access-Control-Allow-Methods': 'GET, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'X-Content-Type-Options': 'nosniff',
+};
+
+// Handle CORS preflight
+export const OPTIONS: APIRoute = () => {
+  return new Response(null, { status: 204, headers: corsHeaders });
+};
+
 // Fallback data when API is unavailable
 const fallbackServices: ServiceCategory[] = [
   {
@@ -57,16 +71,17 @@ const fallbackServices: ServiceCategory[] = [
 export const GET: APIRoute = async () => {
   try {
     if (!isAcuityConfigured()) {
-      // Return fallback data when API not configured
+      // Return fallback data when API not configured (503 Service Unavailable)
       return new Response(
         JSON.stringify({
           data: fallbackServices,
           cached: false,
-          error: 'API not configured - using fallback data',
+          fallback: true,
+          error: 'API not configured',
         } satisfies ApiResponse<ServiceCategory[]>),
         {
-          status: 200,
-          headers: { 'Content-Type': 'application/json' },
+          status: 503,
+          headers: { ...corsHeaders, 'Retry-After': '300' },
         }
       );
     }
@@ -89,25 +104,27 @@ export const GET: APIRoute = async () => {
         data: result.data,
         cached: result.cached,
         cachedAt: result.cachedAt,
+        stale: result.stale,
       } satisfies ApiResponse<ServiceCategory[]>),
       {
         status: 200,
-        headers: { 'Content-Type': 'application/json' },
+        headers: corsHeaders,
       }
     );
   } catch (error) {
     console.error('Error fetching services:', error);
 
-    // Return fallback on error
+    // Return fallback on error with 503 status
     return new Response(
       JSON.stringify({
         data: fallbackServices,
         cached: false,
-        error: error instanceof Error ? error.message : 'Unknown error',
+        fallback: true,
+        error: 'Service temporarily unavailable',
       } satisfies ApiResponse<ServiceCategory[]>),
       {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' },
+        status: 503,
+        headers: { ...corsHeaders, 'Retry-After': '60' },
       }
     );
   }

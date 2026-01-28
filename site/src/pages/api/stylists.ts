@@ -14,31 +14,30 @@ import {
   type Stylist,
   type ApiResponse,
 } from '../../lib/acuity';
+import { STYLISTS } from '../../lib/data/stylists';
 
-// Fallback stylists when API unavailable
-const fallbackStylists: Stylist[] = [
-  {
-    id: 7785532,
-    name: 'Virginia',
-    image: '/images/virginia.jpg',
-    description: 'Owner & Stylist',
-    bookingUrl: 'https://vahair.as.me/?calendarID=7785532',
-  },
-  {
-    id: 8172243,
-    name: 'Kim',
-    image: '/images/kim.jpg',
-    description: 'Stylist',
-    bookingUrl: 'https://vahair.as.me/?calendarID=8172243',
-  },
-  {
-    id: 13454517,
-    name: 'Alyssa',
-    image: '/images/placeholder-stylist.svg',
-    description: 'Stylist',
-    bookingUrl: 'https://vahair.as.me/?calendarID=13454517',
-  },
-];
+// CORS and security headers for API responses
+const corsHeaders = {
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin': 'https://www.vahair.studio',
+  'Access-Control-Allow-Methods': 'GET, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'X-Content-Type-Options': 'nosniff',
+};
+
+// Handle CORS preflight
+export const OPTIONS: APIRoute = () => {
+  return new Response(null, { status: 204, headers: corsHeaders });
+};
+
+// Use centralized stylist data for fallback
+const fallbackStylists: Stylist[] = STYLISTS.map(s => ({
+  id: s.id,
+  name: s.name,
+  image: s.image,
+  description: s.role,
+  bookingUrl: s.bookingUrl,
+}));
 
 export const GET: APIRoute = async () => {
   try {
@@ -47,11 +46,12 @@ export const GET: APIRoute = async () => {
         JSON.stringify({
           data: fallbackStylists,
           cached: false,
-          error: 'API not configured - using fallback data',
+          fallback: true,
+          error: 'API not configured',
         } satisfies ApiResponse<Stylist[]>),
         {
-          status: 200,
-          headers: { 'Content-Type': 'application/json' },
+          status: 503,
+          headers: { ...corsHeaders, 'Retry-After': '300' },
         }
       );
     }
@@ -70,10 +70,11 @@ export const GET: APIRoute = async () => {
         data: result.data,
         cached: result.cached,
         cachedAt: result.cachedAt,
+        stale: result.stale,
       } satisfies ApiResponse<Stylist[]>),
       {
         status: 200,
-        headers: { 'Content-Type': 'application/json' },
+        headers: corsHeaders,
       }
     );
   } catch (error) {
@@ -83,11 +84,12 @@ export const GET: APIRoute = async () => {
       JSON.stringify({
         data: fallbackStylists,
         cached: false,
-        error: error instanceof Error ? error.message : 'Unknown error',
+        fallback: true,
+        error: 'Service temporarily unavailable',
       } satisfies ApiResponse<Stylist[]>),
       {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' },
+        status: 503,
+        headers: { ...corsHeaders, 'Retry-After': '60' },
       }
     );
   }

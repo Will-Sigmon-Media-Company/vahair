@@ -17,21 +17,37 @@ import {
   type ApiResponse,
 } from '../../../lib/acuity';
 
+// CORS and security headers for API responses
+const corsHeaders = {
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin': 'https://www.vahair.studio',
+  'Access-Control-Allow-Methods': 'GET, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'X-Content-Type-Options': 'nosniff',
+};
+
+// Handle CORS preflight
+export const OPTIONS: APIRoute = () => {
+  return new Response(null, { status: 204, headers: corsHeaders });
+};
+
 export const GET: APIRoute = async ({ url }) => {
   const calendarId = url.searchParams.get('calendarId');
 
   if (!calendarId) {
     return new Response(
       JSON.stringify({ error: 'Missing calendarId parameter' }),
-      { status: 400, headers: { 'Content-Type': 'application/json' } }
+      { status: 400, headers: corsHeaders }
     );
   }
 
   const calendarIdNum = parseInt(calendarId, 10);
-  if (isNaN(calendarIdNum)) {
+
+  // Comprehensive validation
+  if (isNaN(calendarIdNum) || calendarIdNum <= 0) {
     return new Response(
       JSON.stringify({ error: 'Invalid calendarId' }),
-      { status: 400, headers: { 'Content-Type': 'application/json' } }
+      { status: 400, headers: corsHeaders }
     );
   }
 
@@ -41,11 +57,12 @@ export const GET: APIRoute = async ({ url }) => {
       JSON.stringify({
         data: null,
         cached: false,
+        fallback: true,
         error: 'API not configured',
       } satisfies ApiResponse<NextSlot | null>),
       {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' },
+        status: 503,
+        headers: { ...corsHeaders, 'Retry-After': '300' },
       }
     );
   }
@@ -89,10 +106,11 @@ export const GET: APIRoute = async ({ url }) => {
         data: result.data,
         cached: result.cached,
         cachedAt: result.cachedAt,
+        stale: result.stale,
       } satisfies ApiResponse<NextSlot | null>),
       {
         status: 200,
-        headers: { 'Content-Type': 'application/json' },
+        headers: corsHeaders,
       }
     );
   } catch (error) {
@@ -102,11 +120,12 @@ export const GET: APIRoute = async ({ url }) => {
       JSON.stringify({
         data: null,
         cached: false,
-        error: error instanceof Error ? error.message : 'Unknown error',
+        fallback: true,
+        error: 'Service temporarily unavailable',
       } satisfies ApiResponse<NextSlot | null>),
       {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' },
+        status: 503,
+        headers: { ...corsHeaders, 'Retry-After': '60' },
       }
     );
   }

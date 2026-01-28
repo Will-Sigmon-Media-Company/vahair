@@ -13,11 +13,12 @@ interface CacheEntry<T> {
 const memoryCache = new Map<string, CacheEntry<unknown>>();
 
 // TTL values in milliseconds
+// Increased to reduce API load while maintaining reasonable freshness
 export const CacheTTL = {
   SERVICES: 60 * 60 * 1000, // 1 hour - services rarely change
   STYLISTS: 30 * 60 * 1000, // 30 minutes - stylist data
-  AVAILABILITY: 5 * 60 * 1000, // 5 minutes - availability changes often
-  NEXT_SLOT: 2 * 60 * 1000, // 2 minutes - next available slot
+  AVAILABILITY: 10 * 60 * 1000, // 10 minutes - availability (was 5min)
+  NEXT_SLOT: 5 * 60 * 1000, // 5 minutes - next available slot (was 2min)
 } as const;
 
 /** Get cached value or execute fetcher */
@@ -25,7 +26,7 @@ export async function withCache<T>(
   key: string,
   fetcher: () => Promise<T>,
   ttlMs: number
-): Promise<{ data: T; cached: boolean; cachedAt?: string }> {
+): Promise<{ data: T; cached: boolean; cachedAt?: string; stale?: boolean }> {
   // Try memory cache first
   const cached = memoryCache.get(key) as CacheEntry<T> | undefined;
 
@@ -50,13 +51,14 @@ export async function withCache<T>(
 
     return { data, cached: false };
   } catch (error) {
-    // If fetch fails but we have stale cache, use it
+    // If fetch fails but we have stale cache, use it with stale indicator
     if (cached) {
       console.warn(`Cache miss but using stale data for ${key}:`, error);
       return {
         data: cached.data,
         cached: true,
         cachedAt: new Date(cached.timestamp).toISOString(),
+        stale: true, // Indicate data is stale due to fetch failure
       };
     }
     throw error;

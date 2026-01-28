@@ -32,11 +32,13 @@ const navLinks = [
       </a>
     </div>
     
-    <!-- Mobile Menu Button -->
-    <button 
+    <!-- Mobile Menu Button (44x44 minimum touch target for accessibility) -->
+    <button
       id="mobile-menu-btn"
-      class="md:hidden relative z-10 w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+      class="md:hidden relative z-10 w-11 h-11 flex flex-col items-center justify-center gap-1.5"
       aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
     >
       <span class="menu-line w-6 h-px bg-current transition-all duration-300"></span>
       <span class="menu-line w-6 h-px bg-current transition-all duration-300"></span>
@@ -102,13 +104,26 @@ const navLinks = [
     }
   });
   
-  // Mobile menu
+  // Mobile menu with accessibility support
   const menuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
-  
+
   menuBtn?.addEventListener('click', () => {
-    menuBtn.classList.toggle('active');
+    const isActive = menuBtn.classList.toggle('active');
     mobileMenu?.classList.toggle('active');
-    document.body.style.overflow = mobileMenu?.classList.contains('active') ? 'hidden' : '';
+    document.body.style.overflow = isActive ? 'hidden' : '';
+    // Update ARIA state for screen readers
+    menuBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+  });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu?.classList.contains('active')) {
+      menuBtn?.classList.remove('active');
+      mobileMenu?.classList.remove('active');
+      document.body.style.overflow = '';
+      menuBtn?.setAttribute('aria-expanded', 'false');
+      menuBtn?.focus();
+    }
   });
 </script>

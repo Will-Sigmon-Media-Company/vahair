@@ -39,6 +39,12 @@ const { title, description = "Expert hair services in downtown Rolesville, NC. C
     <meta name="geo.position" content="35.9232013;-78.4577758" />
     
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Font Preloading for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://vahair.as.me" />
+
     <title>{title}</title>
     
     <!-- Structured Data -->
@@ -74,16 +80,21 @@ const { title, description = "Expert hair services in downtown Rolesville, NC. C
     </script>
   </head>
   <body class="min-h-screen flex flex-col">
+    <!-- Skip Navigation Link (Accessibility) -->
+    <a href="#main-content" class="skip-link">
+      Skip to main content
+    </a>
+
     <!-- Scroll Progress Bar -->
     <div data-scroll-progress class="fixed top-0 left-0 h-[2px] bg-[--color-gold] z-[9999] pointer-events-none" style="width: 0%;"></div>
 
     <Header />
-    <main class="flex-grow">
+    <main id="main-content" class="flex-grow" tabindex="-1">
       <slot />
     </main>
     <Footer />
 
-    <!-- Animations -->
-    <script src="../scripts/animations.js"></script>
+    <!-- Animations (deferred for better performance) -->
+    <script src="../scripts/animations.js" defer></script>
   </body>
 </html>
