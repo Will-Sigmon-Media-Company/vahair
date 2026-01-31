@@ -47,7 +47,7 @@ const navLinks = [
 </header>
 
 <!-- Mobile Menu - OUTSIDE header for proper stacking context -->
-<div id="mobile-menu" class="fixed inset-0 bg-[--color-cream] z-[9990] flex items-center justify-center opacity-0 invisible pointer-events-none transition-all duration-300 md:hidden">
+<div id="mobile-menu" class="md:hidden">
   <nav class="text-center">
     {navLinks.map(link => (
       <a
@@ -79,6 +79,23 @@ const navLinks = [
     padding-bottom: 1rem;
   }
   
+  #mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #FAF7F2;
+    z-index: 9990;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
   #mobile-menu.active {
     opacity: 1;
     visibility: visible;
