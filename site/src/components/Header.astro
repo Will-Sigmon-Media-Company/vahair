@@ -144,4 +144,14 @@ const navLinks = [
       menuBtn?.focus();
     }
   });
+
+  // Close menu when clicking a link
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuBtn?.classList.remove('active');
+      mobileMenu?.classList.remove('active');
+      document.body.style.overflow = '';
+      menuBtn?.setAttribute('aria-expanded', 'false');
+    });
+  });
 </script>

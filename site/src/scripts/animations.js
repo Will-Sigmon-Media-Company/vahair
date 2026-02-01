@@ -4,6 +4,15 @@
  */
 
 // ============================================
+// GLOBAL VISIBILITY STATE
+// ============================================
+let isPageVisible = !document.hidden;
+
+document.addEventListener('visibilitychange', () => {
+  isPageVisible = !document.hidden;
+});
+
+// ============================================
 // CURSOR FOLLOWER
 // ============================================
 class CursorFollower {
@@ -16,6 +25,9 @@ class CursorFollower {
     this.cursorY = 0;
     this.dotX = 0;
     this.dotY = 0;
+    this.lastMouseX = 0;
+    this.lastMouseY = 0;
+    this.lastUpdate = 0;
     this.init();
   }
 
@@ -63,6 +75,32 @@ class CursorFollower {
   }
 
   animate() {
+    // Pause when tab is hidden
+    if (!isPageVisible) {
+      requestAnimationFrame(() => this.animate());
+      return;
+    }
+
+    // Throttle to 30fps
+    const now = performance.now();
+    if (now - this.lastUpdate < 33) {
+      requestAnimationFrame(() => this.animate());
+      return;
+    }
+
+    // Skip if mouse hasn't moved and cursors caught up
+    if (this.lastMouseX === this.mouseX && this.lastMouseY === this.mouseY) {
+      const diff = Math.abs(this.cursorX - this.mouseX) + Math.abs(this.cursorY - this.mouseY);
+      if (diff < 0.5) {
+        requestAnimationFrame(() => this.animate());
+        return;
+      }
+    }
+
+    this.lastUpdate = now;
+    this.lastMouseX = this.mouseX;
+    this.lastMouseY = this.mouseY;
+
     // Smooth follow with different speeds
     this.cursorX += (this.mouseX - this.cursorX) * 0.15;
     this.cursorY += (this.mouseY - this.cursorY) * 0.15;
