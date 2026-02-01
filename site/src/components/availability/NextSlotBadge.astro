@@ -51,9 +51,9 @@ const { calendarId, class: className = '' } = Astro.props;
   const CACHE_DURATION = 30 * 1000; // 30 seconds
   const cache = new Map<number, { data: any; timestamp: number }>();
   const pending = new Map<number, Promise<any>>(); // Deduplication for concurrent requests
-  let isInitializing = false; // Prevent duplicate initialization
+  let currentController: AbortController | null = null; // Track active initialization
 
-  async function fetchNextSlot(calendarId: number) {
+  async function fetchNextSlot(calendarId: number, signal?: AbortSignal) {
     // Check cache first
     const cached = cache.get(calendarId);
     if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
@@ -67,7 +67,10 @@ const { calendarId, class: className = '' } = Astro.props;
 
     const promise = (async () => {
       try {
-        const response = await fetch(`/api/availability/next-slot?calendarId=${calendarId}`);
+        const response = await fetch(
+          `/api/availability/next-slot?calendarId=${calendarId}`,
+          { signal }
+        );
 
         // Check response status before parsing
         if (!response.ok) {
@@ -86,6 +89,8 @@ const { calendarId, class: className = '' } = Astro.props;
         cache.set(calendarId, { data: result.data, timestamp: Date.now() });
         return result.data;
       } catch (error) {
+        // Ignore abort errors (expected on navigation)
+        if (error instanceof Error && error.name === 'AbortError') return null;
         console.error('Error fetching availability:', error);
         return null;
       } finally {
@@ -129,36 +134,44 @@ const { calendarId, class: className = '' } = Astro.props;
 
   // Initialize all badges on page load
   async function initBadges() {
-    // Prevent duplicate initialization (race condition fix)
-    if (isInitializing) return;
-    isInitializing = true;
+    // Cancel any previous initialization (handles navigation race condition)
+    if (currentController) {
+      currentController.abort();
+    }
+    currentController = new AbortController();
+    const signal = currentController.signal;
 
     try {
       const badges = document.querySelectorAll('[data-calendar-id]');
 
       // Fetch all in parallel with deduplication
       const promises = Array.from(badges).map(async (badge) => {
+        if (signal.aborted) return;
+
         const calendarIdAttr = badge.getAttribute('data-calendar-id');
         if (!calendarIdAttr) return;
 
         const calendarId = parseInt(calendarIdAttr, 10);
         if (isNaN(calendarId) || calendarId <= 0) {
-          updateBadge(badge, null); // Show unavailable state for invalid IDs
+          updateBadge(badge, null);
           return;
         }
 
-        const slotData = await fetchNextSlot(calendarId);
-        updateBadge(badge, slotData);
+        const slotData = await fetchNextSlot(calendarId, signal);
+        if (!signal.aborted) {
+          updateBadge(badge, slotData);
+        }
       });
 
       await Promise.all(promises);
-    } finally {
-      isInitializing = false;
+    } catch (error) {
+      if (error instanceof Error && error.name !== 'AbortError') {
+        console.error('Error initializing badges:', error);
+      }
     }
   }
 
   // Only use astro:page-load (fires on initial load AND View Transitions)
-  // Removed duplicate initBadges() call that caused race condition
   document.addEventListener('astro:page-load', initBadges);
 </script>
 
