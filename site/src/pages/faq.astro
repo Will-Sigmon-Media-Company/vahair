@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const faqs = [
+  {
+    question: "How do I book an appointment?",
+    answer: "You can book online through our website by clicking 'Book Now' or visiting our booking page. You can also call us at (919) 671-8353."
+  },
+  {
+    question: "What is your cancellation policy?",
+    answer: "We kindly ask for at least 24 hours notice if you need to cancel or reschedule. You can use the link in your confirmation email to manage your appointment."
+  },
+  {
+    question: "Do you accept walk-ins?",
+    answer: "While we primarily work by appointment to ensure quality time with each client, we do accommodate walk-ins when possible. Call ahead to check availability."
+  },
+  {
+    question: "What forms of payment do you accept?",
+    answer: "We accept all major credit cards, debit cards, and cash."
+  },
+  {
+    question: "How long should I expect my appointment to take?",
+    answer: "Appointment times vary by service. Haircuts typically take 30-60 minutes, while color services can range from 1.5 to 3+ hours depending on the treatment."
+  },
+  {
+    question: "Should I wash my hair before my appointment?",
+    answer: "For haircuts, clean hair is fine. For color services, it's actually better to come with hair that hasn't been washed for 1-2 days, as natural oils can help protect your scalp."
+  },
+  {
+    question: "Do you offer consultations?",
+    answer: "Yes! We offer complimentary consultations for color services and extensions. This helps us understand your goals and recommend the best approach."
+  },
+  {
+    question: "What products do you use and sell?",
+    answer: "We use and retail professional-grade products. Ask your stylist for personalized product recommendations for your hair type."
+  },
+  {
+    question: "Is parking available?",
+    answer: "Yes, free street parking is available on South Main Street and in the surrounding downtown Rolesville area."
+  },
+  {
+    question: "Do you offer services for children?",
+    answer: "Yes! We offer children's haircuts for ages 10 and under. We recommend booking during quieter times for a more relaxed experience."
+  }
+];
+---
+
+<Layout
+  title="FAQ | Virginia Page & Co. Hair Studio"
+  description="Frequently asked questions about appointments, services, and policies at Virginia Page & Co. Hair Studio in Rolesville, NC."
+>
+  <!-- Hero -->
+  <section class="pt-16 pb-24 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-4 block">Help Center</span>
+      <h1 class="display-lg mb-8" style="font-family: var(--font-display);">
+        Frequently Asked Questions
+      </h1>
+      <p class="text-xl text-[--color-taupe] max-w-2xl mx-auto">
+        Everything you need to know about visiting our salon.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ List -->
+  <section class="py-20 px-6 bg-[--color-cream-dark]">
+    <div class="max-w-3xl mx-auto">
+      <div class="space-y-4">
+        {faqs.map((faq, index) => (
+          <details class="group bg-white rounded-xl overflow-hidden shadow-sm">
+            <summary class="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-[--color-cream]/50 transition-colors">
+              <span class="text-lg font-medium pr-4" style="font-family: var(--font-display);">
+                {faq.question}
+              </span>
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-[--color-gold]/10 flex items-center justify-center group-open:bg-[--color-gold] transition-colors">
+                <svg
+                  class="w-3 h-3 text-[--color-gold] group-open:text-white group-open:rotate-180 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <div class="px-6 pb-6 text-[--color-taupe]">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Still Have Questions CTA -->
+  <section class="py-24 px-6 text-center">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="display-md mb-6" style="font-family: var(--font-display);">
+        Still have questions?
+      </h2>
+      <p class="text-[--color-taupe] text-lg mb-10">
+        We're happy to help. Give us a call or send us a message.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="tel:9196718353" class="btn btn-primary">
+          Call (919) 671-8353
+        </a>
+        <a href="/contact" class="btn btn-outline">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
