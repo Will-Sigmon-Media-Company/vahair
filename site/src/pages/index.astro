@@ -148,16 +148,16 @@ const stylists = getHomepageStylists();
               />
             </div>
             <!-- Feathered edge above solid panel -->
-            <div class="absolute bottom-[45%] left-0 right-0 h-[12%]" style="background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.85))"></div>
+            <div class="absolute bottom-[45%] left-0 right-0 h-[12%]" style="background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.93))"></div>
             <!-- Solid dark panel for text -->
-            <div class="absolute bottom-0 left-0 right-0 bg-black/85 p-8 text-[--color-cream]">
-              <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block font-semibold">
+            <div class="absolute bottom-0 left-0 right-0 p-8 text-white" style="background: rgba(0,0,0,0.93)">
+              <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block font-bold">
                 {stylist.role}
               </span>
-              <h3 class="text-3xl mb-2" style="font-family: var(--font-display);">
+              <h3 class="text-3xl mb-2 text-white" style="font-family: var(--font-display);">
                 {stylist.fullName}
               </h3>
-              <p class="text-[--color-cream]/80 mb-2">{stylist.experience}</p>
+              <p class="text-white/90 mb-2">{stylist.experience}</p>
               <NextSlotBadge calendarId={stylist.id} class="mb-4" />
               <a
                 href={stylist.bookingUrl}
