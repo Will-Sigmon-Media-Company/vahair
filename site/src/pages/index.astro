@@ -147,10 +147,10 @@ const stylists = getHomepageStylists();
                 ]}
               />
             </div>
-            <!-- Dark overlay: strong gradient covering bottom 65% for text legibility -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/80 via-50% to-transparent"></div>
+            <!-- Dark overlay: two-layer gradient for reliable text contrast -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 via-60% to-black/10"></div>
             <div class="absolute bottom-0 left-0 right-0 p-8 text-[--color-cream]" style="text-shadow: 0 1px 3px rgba(0,0,0,1), 0 4px 12px rgba(0,0,0,0.9);">
-              <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block text-glow-gold">
+              <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block font-semibold" style="text-shadow: 0 1px 6px rgba(0,0,0,1), 0 2px 10px rgba(0,0,0,0.9);">
                 {stylist.role}
               </span>
               <h3 class="text-3xl mb-2" style="font-family: var(--font-display);">
