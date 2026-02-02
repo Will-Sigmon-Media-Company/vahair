@@ -147,9 +147,9 @@ const stylists = getHomepageStylists();
                 ]}
               />
             </div>
-            <!-- Enhanced gradient: much darker for bright bokeh photos -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 via-40% to-black/20"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-8 text-[--color-cream]" style="text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 4px 16px rgba(0,0,0,0.8), 0 8px 32px rgba(0,0,0,0.6);">
+            <!-- Dark overlay: strong gradient covering bottom 65% for text legibility -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/80 via-50% to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-8 text-[--color-cream]" style="text-shadow: 0 1px 3px rgba(0,0,0,1), 0 4px 12px rgba(0,0,0,0.9);">
               <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block text-glow-gold">
                 {stylist.role}
               </span>
