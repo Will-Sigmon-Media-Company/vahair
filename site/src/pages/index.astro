@@ -147,9 +147,9 @@ const stylists = getHomepageStylists();
                 ]}
               />
             </div>
-            <!-- Enhanced gradient: darker bottom, gold tint at top -->
-            <div class="absolute inset-0 bg-gradient-to-t from-[--color-charcoal]/95 via-[--color-charcoal]/70 to-[--color-gold]/5"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-8 text-[--color-cream] overlay-text-strong">
+            <!-- Enhanced gradient: much darker for bright bokeh photos -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 via-40% to-black/20"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-8 text-[--color-cream]" style="text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 4px 16px rgba(0,0,0,0.8), 0 8px 32px rgba(0,0,0,0.6);">
               <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block text-glow-gold">
                 {stylist.role}
               </span>
