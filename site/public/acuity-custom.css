@@ -1,20 +1,8 @@
 /* Virginia Page & Co. - Acuity Scheduling Custom Theme */
+/* Paste this into Acuity Admin → Scheduling Page → Advanced CSS */
 
-/* Base font & colors */
-body,
-.choose-time,
-#step-pick-appointment {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
-  color: #3a3a3a !important;
-}
-
-/* SELECT buttons - gold theme */
-.select-button,
-.btn-primary,
-button.select-button,
-input[type="submit"],
-.scheduling-select-btn,
-a.btn-primary {
+/* Primary buttons (SELECT, Submit, etc.) - gold theme */
+.btn {
   background-color: #c4a962 !important;
   border-color: #c4a962 !important;
   color: #2c2c2c !important;
@@ -23,126 +11,126 @@ a.btn-primary {
   letter-spacing: 0.05em !important;
   text-transform: uppercase !important;
   font-size: 12px !important;
-  padding: 8px 20px !important;
   transition: all 0.3s ease !important;
 }
 
-.select-button:hover,
-.btn-primary:hover,
-button.select-button:hover,
-input[type="submit"]:hover,
-a.btn-primary:hover {
+.btn:hover {
   background-color: #d4bc78 !important;
   border-color: #d4bc78 !important;
   color: #2c2c2c !important;
 }
 
-/* Calendar/staff selection cards */
-.calendar-picker .calendar,
-.choose-calendar .calendar-item {
+/* Screen titles */
+.step-title {
+  font-weight: 400 !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Appointment type & calendar selection items */
+.select-item {
+  border: 1px solid #e8e2d6 !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.select-item:hover {
+  border-color: #c4a962 !important;
+}
+
+.select-item-box {
+  border: 1px solid #e8e2d6 !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.select-item-box:hover {
+  border-color: #c4a962 !important;
+}
+
+/* Appointment type name text */
+.appointment-type-name {
+  font-weight: 400 !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Entire appointment type container */
+.select-type {
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.select-type:hover {
+  border-color: #c4a962 !important;
+}
+
+/* Calendar selection */
+.select-calendar {
   border: 1px solid #e8e2d6 !important;
   border-radius: 12px !important;
   transition: all 0.3s ease !important;
 }
 
-.calendar-picker .calendar:hover,
-.choose-calendar .calendar-item:hover,
-.calendar-picker .calendar.selected,
-.choose-calendar .calendar-item.selected {
+.select-calendar:hover {
   border-color: #c4a962 !important;
   box-shadow: 0 0 0 2px rgba(196, 169, 98, 0.2) !important;
 }
 
-/* Category headers */
-.category-name,
-h3,
-h2 {
-  font-weight: 400 !important;
-  letter-spacing: 0.02em !important;
-}
-
-/* Appointment type rows */
-.appointment-type-list .appointment-type,
-.type-list .type {
-  border: 1px solid #e8e2d6 !important;
-  border-radius: 8px !important;
-  margin-bottom: 8px !important;
-  transition: all 0.2s ease !important;
-}
-
-.appointment-type-list .appointment-type:hover,
-.type-list .type:hover {
-  border-color: #c4a962 !important;
-  background-color: #faf8f3 !important;
-}
-
-/* Links */
-a {
+/* Calendar days */
+.scheduleday.activeday {
   color: #c4a962 !important;
-  transition: color 0.2s ease !important;
 }
 
-a:hover {
-  color: #b09550 !important;
+.scheduleday.selectedday {
+  background-color: #c4a962 !important;
+  color: #fff !important;
 }
 
 /* Time slots */
-.time-selection .time-slot,
-.available-time {
+.time-selection {
   border: 1px solid #e8e2d6 !important;
   border-radius: 6px !important;
   transition: all 0.2s ease !important;
 }
 
-.time-selection .time-slot:hover,
-.available-time:hover {
+.time-selection:hover {
   border-color: #c4a962 !important;
   background-color: #faf8f3 !important;
 }
 
-.time-selection .time-slot.selected,
-.available-time.selected {
+.time-selection.selected-time {
   background-color: #c4a962 !important;
   border-color: #c4a962 !important;
   color: #fff !important;
 }
 
-/* Form inputs */
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-textarea,
-select {
-  border: 1px solid #e8e2d6 !important;
-  border-radius: 6px !important;
-  padding: 10px 14px !important;
-  transition: border-color 0.2s ease !important;
+/* Duration & price info */
+.duration-container {
+  color: #8a7e6b !important;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="tel"]:focus,
-textarea:focus,
-select:focus {
-  border-color: #c4a962 !important;
-  box-shadow: 0 0 0 3px rgba(196, 169, 98, 0.15) !important;
-  outline: none !important;
+/* Add-ons */
+.addons-container {
+  border-radius: 8px !important;
 }
 
-/* Hide Acuity branding if possible */
-.powered-by {
-  opacity: 0.4 !important;
+.addon-name {
+  font-weight: 500 !important;
 }
 
-/* Overall background */
-#main,
-.scheduler-content,
-body {
-  background-color: #ffffff !important;
-}
-
-/* Arrow/chevron icons in calendar nav */
-.calendar-picker .arrow,
-.nav-arrow {
+.addon-price {
   color: #c4a962 !important;
+  font-weight: 600 !important;
+}
+
+/* Intake forms */
+.custom-form {
+  border-radius: 8px !important;
+}
+
+/* Labels */
+.select-label {
+  font-weight: 400 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  font-size: 11px !important;
 }
