@@ -17,7 +17,7 @@ const stylists = getAllStylists();
         Book Your Appointment
       </h1>
       <p class="text-lg text-[--color-taupe] max-w-2xl mx-auto mb-6 animate-fade-up" style="animation-delay: 0.2s;">
-        Select your stylist to get started, or browse all available times below.
+        Select your stylist, or let us help you find the perfect match.
       </p>
 
       <!-- Stylist quick-select buttons -->
@@ -39,6 +39,79 @@ const stylists = getAllStylists();
             {stylist.name}
           </button>
         ))}
+        <button
+          type="button"
+          id="help-choose-btn"
+          class="filter-pill help-choose-pill"
+          aria-label="Help me choose a stylist"
+        >
+          <svg class="w-4 h-4 inline-block mr-1.5 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Help me choose
+        </button>
+      </div>
+
+      <!-- Questionnaire Panel (hidden by default) -->
+      <div id="questionnaire" class="hidden mt-8 animate-fade-up">
+        <div class="max-w-md mx-auto bg-white rounded-2xl shadow-lg p-6 border border-[--color-cream-dark]">
+          <h3 class="text-lg font-semibold mb-4 text-center" style="font-family: var(--font-display);">
+            What brings you in today?
+          </h3>
+          <div class="grid gap-3">
+            <button type="button" class="service-choice" data-service="haircut">
+              <span class="choice-icon">✂️</span>
+              <span class="choice-text">
+                <strong>Haircut or Styling</strong>
+                <small>Cut, trim, blowout, or special occasion</small>
+              </span>
+            </button>
+            <button type="button" class="service-choice" data-service="color">
+              <span class="choice-icon">🎨</span>
+              <span class="choice-text">
+                <strong>Color Services</strong>
+                <small>Highlights, balayage, all-over color</small>
+              </span>
+            </button>
+            <button type="button" class="service-choice" data-service="both">
+              <span class="choice-icon">💇‍♀️</span>
+              <span class="choice-text">
+                <strong>Both Cut & Color</strong>
+                <small>Full transformation</small>
+              </span>
+            </button>
+            <button type="button" class="service-choice" data-service="treatment">
+              <span class="choice-icon">✨</span>
+              <span class="choice-text">
+                <strong>Treatment</strong>
+                <small>Brazilian blowout, deep conditioning</small>
+              </span>
+            </button>
+          </div>
+          <button type="button" id="close-questionnaire" class="mt-4 text-sm text-[--color-taupe] hover:text-[--color-gold] transition-colors">
+            ← Back to all stylists
+          </button>
+        </div>
+      </div>
+
+      <!-- Recommendation Panel (hidden by default) -->
+      <div id="recommendation" class="hidden mt-8 animate-fade-up">
+        <div class="max-w-md mx-auto bg-gradient-to-br from-[--color-gold]/5 to-[--color-blush]/5 rounded-2xl shadow-lg p-6 border border-[--color-gold]/20">
+          <div class="text-center">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[--color-gold]/10 flex items-center justify-center">
+              <span class="text-2xl" id="rec-icon">⭐</span>
+            </div>
+            <p class="text-sm text-[--color-taupe] mb-2">We recommend</p>
+            <h3 id="rec-name" class="text-2xl font-semibold mb-2" style="font-family: var(--font-display);">Virginia</h3>
+            <p id="rec-reason" class="text-[--color-taupe] text-sm mb-4">Perfect for your haircut needs</p>
+            <button type="button" id="book-recommended" class="w-full py-3 px-6 bg-[--color-gold] text-white rounded-full font-medium hover:bg-[--color-charcoal] transition-colors">
+              Book with <span id="rec-name-btn">Virginia</span>
+            </button>
+            <button type="button" id="see-all-stylists" class="mt-3 text-sm text-[--color-taupe] hover:text-[--color-gold] transition-colors">
+              Or see all stylists
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -190,6 +263,61 @@ const stylists = getAllStylists();
     border-color: var(--color-gold);
     color: white;
   }
+
+  /* Help me choose button */
+  .help-choose-pill {
+    border-style: dashed;
+    background: transparent;
+  }
+
+  .help-choose-pill:hover {
+    background: var(--color-gold)/5;
+  }
+
+  /* Service choice buttons */
+  .service-choice {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--color-cream);
+    border: 1.5px solid var(--color-cream-dark);
+    border-radius: 0.75rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .service-choice:hover {
+    border-color: var(--color-gold);
+    background: white;
+    transform: translateX(4px);
+  }
+
+  .choice-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .choice-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .choice-text strong {
+    color: var(--color-charcoal);
+    font-weight: 600;
+  }
+
+  .choice-text small {
+    color: var(--color-taupe);
+    font-size: 0.8125rem;
+  }
+
+  .hidden {
+    display: none !important;
+  }
 </style>
 
 <script>
@@ -258,4 +386,111 @@ const stylists = getAllStylists();
   if (stylistParam && CALENDARS[stylistParam]) {
     updateScheduler(stylistParam);
   }
+
+  // Questionnaire logic
+  const helpChooseBtn = document.getElementById('help-choose-btn');
+  const questionnaire = document.getElementById('questionnaire');
+  const recommendation = document.getElementById('recommendation');
+  const closeQuestionnaire = document.getElementById('close-questionnaire');
+  const seeAllStylists = document.getElementById('see-all-stylists');
+  const bookRecommended = document.getElementById('book-recommended');
+  const stylistButtons = document.querySelector('.flex.flex-wrap.justify-center.gap-3');
+
+  // Stylist recommendations based on service
+  const RECOMMENDATIONS: Record<string, { name: string; key: string; icon: string; reason: string }> = {
+    haircut: {
+      name: 'Kim',
+      key: 'kim',
+      icon: '✂️',
+      reason: '20 years of experience crafting the perfect cut'
+    },
+    color: {
+      name: 'Alyssa',
+      key: 'alyssa',
+      icon: '🎨',
+      reason: 'Our color specialist with an eye for stunning results'
+    },
+    both: {
+      name: 'Virginia',
+      key: 'virginia',
+      icon: '💫',
+      reason: 'Owner & master stylist for your full transformation'
+    },
+    treatment: {
+      name: 'Virginia',
+      key: 'virginia',
+      icon: '✨',
+      reason: 'Expert in Brazilian blowouts and treatments'
+    }
+  };
+
+  let currentRecommendation: string | null = null;
+
+  // Show questionnaire
+  helpChooseBtn?.addEventListener('click', () => {
+    questionnaire?.classList.remove('hidden');
+    recommendation?.classList.add('hidden');
+    // Hide regular buttons but keep help button visible
+    document.querySelectorAll('.quick-book-btn').forEach(btn => {
+      (btn as HTMLElement).style.display = 'none';
+    });
+  });
+
+  // Close questionnaire
+  function resetToButtons() {
+    questionnaire?.classList.add('hidden');
+    recommendation?.classList.add('hidden');
+    document.querySelectorAll('.quick-book-btn').forEach(btn => {
+      (btn as HTMLElement).style.display = '';
+    });
+  }
+
+  closeQuestionnaire?.addEventListener('click', resetToButtons);
+  seeAllStylists?.addEventListener('click', resetToButtons);
+
+  // Handle service choice
+  document.querySelectorAll('.service-choice').forEach(choice => {
+    choice.addEventListener('click', (e) => {
+      const service = (e.currentTarget as HTMLElement).dataset.service;
+      if (!service || !RECOMMENDATIONS[service]) return;
+
+      const rec = RECOMMENDATIONS[service];
+      currentRecommendation = rec.key;
+
+      // Update recommendation panel
+      const recIcon = document.getElementById('rec-icon');
+      const recName = document.getElementById('rec-name');
+      const recReason = document.getElementById('rec-reason');
+      const recNameBtn = document.getElementById('rec-name-btn');
+
+      if (recIcon) recIcon.textContent = rec.icon;
+      if (recName) recName.textContent = rec.name;
+      if (recReason) recReason.textContent = rec.reason;
+      if (recNameBtn) recNameBtn.textContent = rec.name;
+
+      // Show recommendation, hide questionnaire
+      questionnaire?.classList.add('hidden');
+      recommendation?.classList.remove('hidden');
+    });
+  });
+
+  // Book with recommended stylist
+  bookRecommended?.addEventListener('click', () => {
+    if (currentRecommendation) {
+      updateScheduler(currentRecommendation);
+      resetToButtons();
+      // Update active button
+      document.querySelectorAll('.quick-book-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if ((btn as HTMLElement).dataset.stylist === currentRecommendation) {
+          btn.classList.add('active');
+        }
+      });
+      // Scroll to scheduler
+      const schedulerSection = document.getElementById('scheduler');
+      if (schedulerSection) {
+        schedulerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  });
 </script>
