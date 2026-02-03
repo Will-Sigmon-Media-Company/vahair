@@ -1,136 +1,663 @@
-/* Virginia Page & Co. - Acuity Scheduling Custom Theme */
-/* Paste this into Acuity Admin → Scheduling Page → Advanced CSS */
+/* ═══════════════════════════════════════════════════════════════════════════
+   Virginia Page & Co. Hair Studio - Acuity Custom Theme
+   ═══════════════════════════════════════════════════════════════════════════
 
-/* Primary buttons (SELECT, Submit, etc.) - gold theme */
-.btn {
-  background-color: #c4a962 !important;
-  border-color: #c4a962 !important;
-  color: #2c2c2c !important;
+   HOW TO USE:
+   1. Go to Acuity Admin → Appearance → Scheduling Page Styles
+   2. Click "Advanced CSS" at the bottom
+   3. Paste this entire file
+   4. Save
+
+   COLOR PALETTE:
+   - Cream (bg):     #FAF7F2
+   - Cream Dark:     #F0EBE3
+   - Charcoal:       #2D2A26
+   - Gold:           #C4A962
+   - Gold Light:     #D4C08A
+   - Taupe:          #8B8178
+   - Blush:          #E8DED5
+
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BASE STYLES & TYPOGRAPHY
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Import fonts to match the website */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Outfit:wght@300;400;500;600&display=swap');
+
+/* Overall container */
+#scheduler {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  background-color: #FAF7F2 !important;
+  color: #2D2A26 !important;
+  line-height: 1.6 !important;
+}
+
+/* All text */
+body, div, span, p, a, label, input, select, textarea, button {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Headings - use display font */
+h1, h2, h3, h4, .step-title, .choose-type-title {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
+  color: #2D2A26 !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BUTTONS - Primary Actions
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Primary buttons (SELECT, Submit, Continue, etc.) */
+.btn,
+.btn-primary,
+input[type="submit"],
+button[type="submit"] {
+  background-color: #C4A962 !important;
+  border: 2px solid #C4A962 !important;
+  color: #2D2A26 !important;
   border-radius: 6px !important;
   font-weight: 600 !important;
-  letter-spacing: 0.05em !important;
+  letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
   font-size: 12px !important;
+  padding: 12px 24px !important;
   transition: all 0.3s ease !important;
+  box-shadow: none !important;
 }
 
-.btn:hover {
-  background-color: #d4bc78 !important;
-  border-color: #d4bc78 !important;
-  color: #2c2c2c !important;
+.btn:hover,
+.btn-primary:hover,
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+  background-color: #2D2A26 !important;
+  border-color: #2D2A26 !important;
+  color: #FAF7F2 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(45, 42, 38, 0.15) !important;
 }
 
-/* Screen titles */
+/* Secondary/outline buttons */
+.btn-default,
+.btn-secondary {
+  background-color: transparent !important;
+  border: 2px solid #2D2A26 !important;
+  color: #2D2A26 !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  font-size: 12px !important;
+}
+
+.btn-default:hover,
+.btn-secondary:hover {
+  background-color: #2D2A26 !important;
+  color: #FAF7F2 !important;
+}
+
+/* Back/Cancel links */
+.btn-link,
+a.back-link {
+  color: #8B8178 !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  transition: color 0.2s ease !important;
+}
+
+.btn-link:hover,
+a.back-link:hover {
+  color: #C4A962 !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   STEP TITLES & PROGRESS
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .step-title {
+  font-size: 1.75rem !important;
   font-weight: 400 !important;
-  letter-spacing: 0.02em !important;
+  margin-bottom: 1.5rem !important;
+  color: #2D2A26 !important;
 }
 
-/* Appointment type & calendar selection items */
-.select-item {
-  border: 1px solid #e8e2d6 !important;
-  border-radius: 8px !important;
-  transition: all 0.2s ease !important;
+/* Progress indicator */
+.progress-steps {
+  margin-bottom: 2rem !important;
 }
 
-.select-item:hover {
-  border-color: #c4a962 !important;
+.progress-step {
+  color: #8B8178 !important;
 }
 
-.select-item-box {
-  border: 1px solid #e8e2d6 !important;
-  border-radius: 8px !important;
-  transition: all 0.2s ease !important;
+.progress-step.active,
+.progress-step.completed {
+  color: #C4A962 !important;
 }
 
-.select-item-box:hover {
-  border-color: #c4a962 !important;
+/* ─────────────────────────────────────────────────────────────────────────────
+   SERVICE/APPOINTMENT TYPE SELECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Category headers */
+.category-name,
+.appointment-category {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 500 !important;
+  color: #2D2A26 !important;
+  border-bottom: 1px solid #E8DED5 !important;
+  padding-bottom: 0.75rem !important;
+  margin-bottom: 1rem !important;
 }
 
-/* Appointment type name text */
-.appointment-type-name {
-  font-weight: 400 !important;
-  letter-spacing: 0.02em !important;
-}
-
-/* Entire appointment type container */
+/* Service/appointment type cards */
+.select-item,
+.select-item-box,
+.appointment-type,
 .select-type {
-  border-radius: 8px !important;
-  transition: all 0.2s ease !important;
-}
-
-.select-type:hover {
-  border-color: #c4a962 !important;
-}
-
-/* Calendar selection */
-.select-calendar {
-  border: 1px solid #e8e2d6 !important;
+  border: 1px solid #E8DED5 !important;
   border-radius: 12px !important;
-  transition: all 0.3s ease !important;
+  padding: 1rem !important;
+  margin-bottom: 0.75rem !important;
+  background: white !important;
+  transition: all 0.25s ease !important;
+  cursor: pointer !important;
 }
 
-.select-calendar:hover {
-  border-color: #c4a962 !important;
-  box-shadow: 0 0 0 2px rgba(196, 169, 98, 0.2) !important;
+.select-item:hover,
+.select-item-box:hover,
+.appointment-type:hover,
+.select-type:hover {
+  border-color: #C4A962 !important;
+  box-shadow: 0 4px 16px rgba(196, 169, 98, 0.15) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Selected state */
+.select-item.selected,
+.select-item-box.selected,
+.appointment-type.selected {
+  border-color: #C4A962 !important;
+  background: linear-gradient(135deg, #FAF7F2 0%, #F0EBE3 100%) !important;
+  box-shadow: 0 0 0 3px rgba(196, 169, 98, 0.2) !important;
+}
+
+/* Service name */
+.appointment-type-name,
+.type-name {
+  font-weight: 500 !important;
+  font-size: 1rem !important;
+  color: #2D2A26 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* Service description */
+.appointment-type-description,
+.type-description {
+  color: #8B8178 !important;
+  font-size: 0.875rem !important;
+  margin-top: 0.25rem !important;
+}
+
+/* Duration & Price */
+.duration-container,
+.appointment-duration,
+.price-duration {
+  color: #8B8178 !important;
+  font-size: 0.875rem !important;
+}
+
+.appointment-price,
+.type-price {
+  color: #C4A962 !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CALENDAR/STYLIST SELECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Calendar (stylist) selection cards */
+.select-calendar,
+.calendar-item {
+  border: 1px solid #E8DED5 !important;
+  border-radius: 12px !important;
+  padding: 1.25rem !important;
+  background: white !important;
+  transition: all 0.25s ease !important;
+}
+
+.select-calendar:hover,
+.calendar-item:hover {
+  border-color: #C4A962 !important;
+  box-shadow: 0 4px 20px rgba(196, 169, 98, 0.2) !important;
+}
+
+.select-calendar.selected,
+.calendar-item.selected {
+  border-color: #C4A962 !important;
+  box-shadow: 0 0 0 3px rgba(196, 169, 98, 0.25) !important;
+}
+
+/* Calendar/stylist name */
+.calendar-name {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 1.125rem !important;
+  font-weight: 500 !important;
+  color: #2D2A26 !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DATE PICKER / CALENDAR
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Calendar container */
+.calendar-container,
+.datepicker {
+  background: white !important;
+  border-radius: 12px !important;
+  border: 1px solid #E8DED5 !important;
+  padding: 1rem !important;
+}
+
+/* Month/year header */
+.calendar-header,
+.datepicker-header {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 1.25rem !important;
+  color: #2D2A26 !important;
+  font-weight: 500 !important;
+}
+
+/* Navigation arrows */
+.calendar-nav,
+.datepicker-nav {
+  color: #8B8178 !important;
+  transition: color 0.2s ease !important;
+}
+
+.calendar-nav:hover,
+.datepicker-nav:hover {
+  color: #C4A962 !important;
+}
+
+/* Day names (Mon, Tue, etc.) */
+.day-name,
+.weekday {
+  color: #8B8178 !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
 }
 
 /* Calendar days */
-.scheduleday.activeday {
-  color: #c4a962 !important;
-}
-
-.scheduleday.selectedday {
-  background-color: #c4a962 !important;
-  color: #fff !important;
-}
-
-/* Time slots */
-.time-selection {
-  border: 1px solid #e8e2d6 !important;
-  border-radius: 6px !important;
+.scheduleday,
+.day {
+  color: #2D2A26 !important;
+  border-radius: 50% !important;
   transition: all 0.2s ease !important;
 }
 
-.time-selection:hover {
-  border-color: #c4a962 !important;
-  background-color: #faf8f3 !important;
+/* Available days */
+.scheduleday.activeday,
+.day.available {
+  color: #C4A962 !important;
+  font-weight: 600 !important;
 }
 
-.time-selection.selected-time {
-  background-color: #c4a962 !important;
-  border-color: #c4a962 !important;
-  color: #fff !important;
+.scheduleday.activeday:hover,
+.day.available:hover {
+  background-color: rgba(196, 169, 98, 0.15) !important;
 }
 
-/* Duration & price info */
-.duration-container {
-  color: #8a7e6b !important;
+/* Selected day */
+.scheduleday.selectedday,
+.day.selected {
+  background-color: #C4A962 !important;
+  color: white !important;
+  font-weight: 600 !important;
 }
 
-/* Add-ons */
-.addons-container {
+/* Unavailable/past days */
+.scheduleday.inactiveday,
+.day.unavailable {
+  color: #E8DED5 !important;
+}
+
+/* Today indicator */
+.scheduleday.today,
+.day.today {
+  border: 2px solid #C4A962 !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TIME SLOT SELECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Time slots container */
+.time-slots,
+.times-container {
+  display: grid !important;
+  gap: 0.5rem !important;
+}
+
+/* Individual time slot */
+.time-selection,
+.time-slot {
+  border: 1px solid #E8DED5 !important;
   border-radius: 8px !important;
+  padding: 0.875rem 1rem !important;
+  background: white !important;
+  color: #2D2A26 !important;
+  font-weight: 500 !important;
+  text-align: center !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+.time-selection:hover,
+.time-slot:hover {
+  border-color: #C4A962 !important;
+  background-color: #FAF7F2 !important;
+  transform: scale(1.02) !important;
+}
+
+.time-selection.selected-time,
+.time-slot.selected {
+  background-color: #C4A962 !important;
+  border-color: #C4A962 !important;
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ADD-ONS SECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.addons-container,
+.add-ons {
+  background: #FAF7F2 !important;
+  border-radius: 12px !important;
+  padding: 1.5rem !important;
+  margin: 1.5rem 0 !important;
+}
+
+.addons-title,
+.add-ons-title {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 1.25rem !important;
+  color: #2D2A26 !important;
+  margin-bottom: 1rem !important;
+}
+
+.addon-item {
+  border: 1px solid #E8DED5 !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+  background: white !important;
+  margin-bottom: 0.5rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.addon-item:hover {
+  border-color: #C4A962 !important;
+}
+
+.addon-item.selected {
+  border-color: #C4A962 !important;
+  background: linear-gradient(135deg, #FAF7F2 0%, #F0EBE3 100%) !important;
 }
 
 .addon-name {
   font-weight: 500 !important;
+  color: #2D2A26 !important;
 }
 
 .addon-price {
-  color: #c4a962 !important;
+  color: #C4A962 !important;
   font-weight: 600 !important;
 }
 
-/* Intake forms */
-.custom-form {
-  border-radius: 8px !important;
+.addon-duration {
+  color: #8B8178 !important;
+  font-size: 0.875rem !important;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   FORM INPUTS (Client Info)
+   ───────────────────────────────────────────────────────────────────────────── */
+
 /* Labels */
+label,
+.form-label,
 .select-label {
-  font-weight: 400 !important;
-  letter-spacing: 0.05em !important;
-  text-transform: uppercase !important;
-  font-size: 11px !important;
+  font-weight: 500 !important;
+  color: #2D2A26 !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 0.03em !important;
+  margin-bottom: 0.5rem !important;
+  display: block !important;
 }
+
+/* Text inputs */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+  border: 1px solid #E8DED5 !important;
+  border-radius: 8px !important;
+  padding: 0.875rem 1rem !important;
+  font-size: 1rem !important;
+  color: #2D2A26 !important;
+  background: white !important;
+  transition: all 0.2s ease !important;
+  width: 100% !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #C4A962 !important;
+  box-shadow: 0 0 0 3px rgba(196, 169, 98, 0.15) !important;
+  outline: none !important;
+}
+
+/* Placeholder text */
+::placeholder {
+  color: #8B8178 !important;
+  opacity: 0.7 !important;
+}
+
+/* Checkboxes & Radio buttons */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: #C4A962 !important;
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* Custom forms/intake forms */
+.custom-form,
+.intake-form {
+  background: #FAF7F2 !important;
+  border-radius: 12px !important;
+  padding: 1.5rem !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONFIRMATION & SUMMARY
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Confirmation page */
+.confirmation-container,
+.booking-confirmation {
+  text-align: center !important;
+  padding: 2rem !important;
+}
+
+.confirmation-title {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 2rem !important;
+  color: #2D2A26 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Appointment summary */
+.appointment-summary,
+.booking-summary {
+  background: white !important;
+  border: 1px solid #E8DED5 !important;
+  border-radius: 12px !important;
+  padding: 1.5rem !important;
+  margin: 1.5rem 0 !important;
+}
+
+.summary-item {
+  display: flex !important;
+  justify-content: space-between !important;
+  padding: 0.75rem 0 !important;
+  border-bottom: 1px solid #F0EBE3 !important;
+}
+
+.summary-item:last-child {
+  border-bottom: none !important;
+}
+
+.summary-label {
+  color: #8B8178 !important;
+  font-size: 0.875rem !important;
+}
+
+.summary-value {
+  color: #2D2A26 !important;
+  font-weight: 500 !important;
+}
+
+/* Total price */
+.total-price,
+.booking-total {
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  color: #C4A962 !important;
+  margin-top: 1rem !important;
+  padding-top: 1rem !important;
+  border-top: 2px solid #E8DED5 !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ALERTS & MESSAGES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Success messages */
+.alert-success,
+.success-message {
+  background: linear-gradient(135deg, #FAF7F2 0%, #F0EBE3 100%) !important;
+  border: 1px solid #C4A962 !important;
+  border-left: 4px solid #C4A962 !important;
+  border-radius: 8px !important;
+  color: #2D2A26 !important;
+  padding: 1rem 1.25rem !important;
+}
+
+/* Error messages */
+.alert-danger,
+.alert-error,
+.error-message {
+  background: #FDF2F2 !important;
+  border: 1px solid #E8B4B4 !important;
+  border-left: 4px solid #D97474 !important;
+  border-radius: 8px !important;
+  color: #9B4444 !important;
+  padding: 1rem 1.25rem !important;
+}
+
+/* Info messages */
+.alert-info,
+.info-message {
+  background: #F0EBE3 !important;
+  border: 1px solid #E8DED5 !important;
+  border-radius: 8px !important;
+  color: #8B8178 !important;
+  padding: 1rem 1.25rem !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LOADING STATES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.loading,
+.spinner {
+  border-color: #E8DED5 !important;
+  border-top-color: #C4A962 !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MISCELLANEOUS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Dividers */
+hr {
+  border-color: #E8DED5 !important;
+  margin: 1.5rem 0 !important;
+}
+
+/* Links */
+a {
+  color: #C4A962 !important;
+  transition: color 0.2s ease !important;
+}
+
+a:hover {
+  color: #A08840 !important;
+}
+
+/* Tooltips */
+.tooltip {
+  background: #2D2A26 !important;
+  color: #FAF7F2 !important;
+  border-radius: 6px !important;
+  font-size: 0.875rem !important;
+}
+
+/* Hide Acuity branding (if allowed by plan) */
+.powered-by-acuity {
+  opacity: 0.5 !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE ADJUSTMENTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .step-title {
+    font-size: 1.5rem !important;
+  }
+
+  .select-item,
+  .select-item-box,
+  .appointment-type {
+    padding: 0.875rem !important;
+  }
+
+  .btn,
+  .btn-primary,
+  input[type="submit"] {
+    width: 100% !important;
+    padding: 14px 20px !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   END OF CUSTOM STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */

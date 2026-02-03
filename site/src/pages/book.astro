@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import StylistAvailabilityCard from '../components/booking/StylistAvailabilityCard.astro';
 import { getAllStylists } from '../lib/data/stylists';
 
 // Use centralized stylist data
@@ -11,95 +10,46 @@ const stylists = getAllStylists();
   title="Book Online | Virginia Page & Co. Hair Studio"
   description="Schedule your next hair appointment online. Choose your stylist and service for instant booking."
 >
-  <!-- Hero with floating animation -->
-  <section class="pt-16 pb-12 px-6 relative overflow-hidden">
-    <!-- Floating decorative elements - enhanced gold opacity -->
-    <div class="absolute inset-0 pointer-events-none">
-      <div class="floating-shape shape-1 absolute w-64 h-64 rounded-full bg-[--color-gold]/15 blur-3xl"></div>
-      <div class="floating-shape shape-2 absolute w-48 h-48 rounded-full bg-[--color-blush]/20 blur-2xl"></div>
-      <div class="floating-shape shape-3 absolute w-32 h-32 rounded-full bg-[--color-gold]/20 blur-xl"></div>
-    </div>
-
+  <!-- Compact Hero -->
+  <section class="pt-12 pb-8 px-6 relative overflow-hidden">
     <div class="max-w-4xl mx-auto text-center relative">
-      <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-4 block animate-fade-up" style="animation-delay: 0.1s;">
-        Schedule
-      </span>
-      <h1 class="display-lg mb-8 animate-fade-up" style="font-family: var(--font-display); animation-delay: 0.2s;">
+      <h1 class="display-lg mb-4 animate-fade-up" style="font-family: var(--font-display); animation-delay: 0.1s;">
         Book Your Appointment
       </h1>
-      <p class="text-xl text-[--color-taupe] max-w-2xl mx-auto mb-10 animate-fade-up" style="animation-delay: 0.3s;">
-        Select your service and preferred stylist to schedule your visit.
+      <p class="text-lg text-[--color-taupe] max-w-2xl mx-auto mb-6 animate-fade-up" style="animation-delay: 0.2s;">
+        Select your stylist to get started, or browse all available times below.
       </p>
 
-      <!-- Animated quick links - scroll to scheduler with stylist pre-selected -->
-      <div class="flex flex-wrap justify-center gap-4 animate-fade-up" style="animation-delay: 0.4s;">
-        {stylists.map((stylist, i) => (
+      <!-- Stylist quick-select buttons -->
+      <div class="flex flex-wrap justify-center gap-3 animate-fade-up" style="animation-delay: 0.3s;">
+        <button
+          type="button"
+          data-stylist="all"
+          class="quick-book-btn filter-pill active"
+        >
+          All Stylists
+        </button>
+        {stylists.map((stylist) => (
           <button
             type="button"
             data-stylist={stylist.name.toLowerCase()}
             aria-label={`Book appointment with ${stylist.name}`}
-            class="quick-book-btn btn btn-outline group relative overflow-hidden hover:shadow-[0_0_25px_rgba(196,169,98,0.3)] transition-shadow duration-300"
-            style={`animation-delay: ${0.4 + i * 0.1}s;`}
+            class="quick-book-btn filter-pill"
           >
-            <span class="relative z-10">Book with {stylist.name}</span>
-            <span class="absolute inset-0 bg-[--color-gold] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-            <span class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-              Book with {stylist.name}
-            </span>
+            {stylist.fullName}
           </button>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Who's Available - Fancy Cards -->
-  <section class="py-16 px-6 bg-gradient-to-b from-[--color-cream] to-[--color-cream-dark]">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl mb-4" style="font-family: var(--font-display);" data-reveal>
-          Who's Available?
-        </h2>
-        <p class="text-[--color-taupe]" data-reveal data-reveal-delay="100">
-          See real-time availability and book instantly
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-stagger="0.15">
-        {stylists.map((stylist) => (
-          <StylistAvailabilityCard {...stylist} />
-        ))}
-      </div>
-
-      <!-- Fun fact callout -->
-      <div class="mt-10 text-center" data-reveal data-reveal-delay="300">
-        <p class="inline-flex items-center gap-2 text-sm text-[--color-taupe] bg-white/50 px-4 py-2 rounded-full">
-          <svg class="w-4 h-4 text-[--color-gold]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
-          </svg>
-          <span>Most clients book within <strong>24 hours</strong> of their preferred time</span>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Acuity Embed with better container -->
-  <section class="py-12 px-6 bg-[--color-cream]" id="scheduler">
+  <!-- Acuity Embed -->
+  <section class="pb-12 px-6 bg-[--color-cream]" id="scheduler">
     <div class="max-w-5xl mx-auto">
-      <!-- Stylist Filter -->
-      <div class="text-center mb-8">
-        <p class="text-sm text-[--color-taupe] mb-4">Filter by stylist:</p>
-        <div class="stylist-filter">
-          <button class="filter-pill active" data-calendar="all">All Stylists</button>
-          <button class="filter-pill" data-calendar="virginia">Virginia</button>
-          <button class="filter-pill" data-calendar="kim">Kim</button>
-          <button class="filter-pill" data-calendar="alyssa">Alyssa</button>
-        </div>
-      </div>
-
       <div class="relative">
         <!-- Decorative border -->
         <div class="absolute -inset-3 bg-gradient-to-r from-[--color-gold]/20 via-[--color-blush]/20 to-[--color-gold]/20 rounded-2xl blur-sm"></div>
-        <div class="acuity-container relative bg-white rounded-xl shadow-2xl shadow-[--color-charcoal]/5 overflow-hidden">
+        <div class="acuity-container relative bg-[--color-cream] rounded-xl shadow-2xl shadow-[--color-charcoal]/5 overflow-hidden">
           <iframe
             id="acuity-embed"
             src="https://app.acuityscheduling.com/schedule.php?owner=38274584"
@@ -177,44 +127,6 @@ const stylists = getAllStylists();
 </Layout>
 
 <style>
-  /* Floating shapes animation */
-  .floating-shape {
-    animation: float 20s ease-in-out infinite;
-  }
-
-  .shape-1 {
-    top: 10%;
-    left: 5%;
-    animation-delay: 0s;
-  }
-
-  .shape-2 {
-    top: 60%;
-    right: 10%;
-    animation-delay: -7s;
-  }
-
-  .shape-3 {
-    bottom: 20%;
-    left: 30%;
-    animation-delay: -14s;
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translate(0, 0) rotate(0deg);
-    }
-    25% {
-      transform: translate(30px, -30px) rotate(5deg);
-    }
-    50% {
-      transform: translate(0, -50px) rotate(0deg);
-    }
-    75% {
-      transform: translate(-30px, -20px) rotate(-5deg);
-    }
-  }
-
   /* Fade up animation */
   @keyframes fade-up {
     from {
@@ -256,27 +168,21 @@ const stylists = getAllStylists();
   }
 
   /* Stylist filter pills */
-  .stylist-filter {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-  }
-
   .filter-pill {
-    padding: 0.5rem 1.25rem;
+    padding: 0.625rem 1.5rem;
     border-radius: 9999px;
-    border: 1px solid var(--color-cream-dark);
+    border: 1.5px solid var(--color-cream-dark);
     background: white;
     color: var(--color-charcoal);
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
   }
 
   .filter-pill:hover {
     border-color: var(--color-gold);
+    background: var(--color-gold)/10;
   }
 
   .filter-pill.active {
@@ -288,7 +194,7 @@ const stylists = getAllStylists();
 
 <script>
   // Stylist calendar IDs
-  const CALENDARS = {
+  const CALENDARS: Record<string, string> = {
     all: '',
     virginia: '13484734',
     kim: '13484780',
@@ -309,7 +215,8 @@ const stylists = getAllStylists();
   }
 
   // Handle stylist filter selection
-  function updateScheduler(calendarId: string) {
+  function updateScheduler(stylistKey: string) {
+    const calendarId = CALENDARS[stylistKey] || '';
     const baseUrl = 'https://app.acuityscheduling.com/schedule.php?owner=38274584';
     const newUrl = calendarId ? `${baseUrl}&calendarID=${calendarId}` : baseUrl;
 
@@ -322,38 +229,21 @@ const stylists = getAllStylists();
       iframe.src = newUrl;
     }
 
-    // Update active pill
-    document.querySelectorAll('.filter-pill').forEach(pill => {
-      pill.classList.remove('active');
+    // Update active button
+    document.querySelectorAll('.quick-book-btn').forEach(btn => {
+      btn.classList.remove('active');
     });
-    const activePill = document.querySelector(`[data-calendar="${calendarId || 'all'}"]`);
-    if (activePill) activePill.classList.add('active');
+    const activeBtn = document.querySelector(`[data-stylist="${stylistKey}"]`);
+    if (activeBtn) activeBtn.classList.add('active');
   }
 
-  // Attach click handlers to filter pills
-  document.querySelectorAll('.filter-pill').forEach(pill => {
-    pill.addEventListener('click', (e) => {
-      const target = e.currentTarget as HTMLElement;
-      const calendarId = target.dataset.calendar === 'all' ? '' : CALENDARS[target.dataset.calendar as keyof typeof CALENDARS];
-      updateScheduler(calendarId);
-    });
-  });
-
-  // Check for URL params to pre-select stylist
-  const urlParams = new URLSearchParams(window.location.search);
-  const stylistParam = urlParams.get('stylist');
-  if (stylistParam && CALENDARS[stylistParam as keyof typeof CALENDARS]) {
-    updateScheduler(CALENDARS[stylistParam as keyof typeof CALENDARS]);
-  }
-
-  // Quick book buttons - scroll to scheduler and pre-select stylist
+  // Attach click handlers to quick book buttons
   document.querySelectorAll('.quick-book-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const target = e.currentTarget as HTMLElement;
-      const stylistName = target.dataset.stylist;
-      if (stylistName && CALENDARS[stylistName as keyof typeof CALENDARS]) {
-        updateScheduler(CALENDARS[stylistName as keyof typeof CALENDARS]);
-      }
+      const stylistKey = target.dataset.stylist || 'all';
+      updateScheduler(stylistKey);
+
       // Smooth scroll to scheduler section
       const schedulerSection = document.getElementById('scheduler');
       if (schedulerSection) {
@@ -361,4 +251,11 @@ const stylists = getAllStylists();
       }
     });
   });
+
+  // Check for URL params to pre-select stylist
+  const urlParams = new URLSearchParams(window.location.search);
+  const stylistParam = urlParams.get('stylist');
+  if (stylistParam && CALENDARS[stylistParam]) {
+    updateScheduler(stylistParam);
+  }
 </script>
