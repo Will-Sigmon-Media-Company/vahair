@@ -42,7 +42,7 @@ export const STYLISTS: Stylist[] = [
   {
     id: 13484805,
     name: 'Alyssa',
-    fullName: 'Alyssa',
+    fullName: 'Alyssa Valdes',
     image: '/images/alyssa.jpg',
     role: 'Color Specialist',
     experience: '6 years of experience',
