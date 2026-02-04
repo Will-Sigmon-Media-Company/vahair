@@ -47,24 +47,27 @@ const stylists = getHomepageStylists();
   </section>
 
   <!-- Social Proof Bar -->
-  <section class="py-12 md:py-16 px-6 bg-[--color-charcoal] text-[--color-cream]">
-    <div class="max-w-5xl mx-auto">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div>
-          <p class="text-3xl md:text-4xl font-light mb-1" style="font-family: var(--font-display);">40+</p>
-          <p class="text-sm text-[--color-taupe] uppercase tracking-wider">Years Combined Experience</p>
+  <section class="py-16 md:py-20 px-6 bg-[--color-charcoal] text-[--color-cream] relative overflow-hidden">
+    <!-- Subtle ambient glow -->
+    <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-64 h-64 rounded-full bg-[--color-gold]/5 blur-3xl"></div>
+    <div class="absolute top-1/2 right-1/4 -translate-y-1/2 w-64 h-64 rounded-full bg-[--color-gold]/5 blur-3xl"></div>
+    <div class="max-w-5xl mx-auto relative">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
+        <div class="group">
+          <p class="text-4xl md:text-5xl font-light mb-2 text-[--color-cream] group-hover:text-[--color-gold] transition-colors" style="font-family: var(--font-display);">40<span class="text-[--color-gold]">+</span></p>
+          <p class="text-xs text-[--color-cream]/60 uppercase tracking-widest">Years Combined<br class="hidden md:block" /> Experience</p>
         </div>
-        <div>
-          <p class="text-3xl md:text-4xl font-light mb-1" style="font-family: var(--font-display);">3</p>
-          <p class="text-sm text-[--color-taupe] uppercase tracking-wider">Expert Stylists</p>
+        <div class="group">
+          <p class="text-4xl md:text-5xl font-light mb-2 text-[--color-cream] group-hover:text-[--color-gold] transition-colors" style="font-family: var(--font-display);">3</p>
+          <p class="text-xs text-[--color-cream]/60 uppercase tracking-widest">Expert<br class="hidden md:block" /> Stylists</p>
         </div>
-        <div>
-          <p class="text-3xl md:text-4xl font-light mb-1 text-[--color-gold]" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-          <p class="text-sm text-[--color-taupe] uppercase tracking-wider">5-Star Reviews</p>
+        <div class="group">
+          <p class="text-2xl md:text-3xl font-light mb-2 text-[--color-gold] tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</p>
+          <p class="text-xs text-[--color-cream]/60 uppercase tracking-widest">5-Star<br class="hidden md:block" /> Reviews</p>
         </div>
-        <div>
-          <p class="text-3xl md:text-4xl font-light mb-1" style="font-family: var(--font-display);">♥</p>
-          <p class="text-sm text-[--color-taupe] uppercase tracking-wider">Downtown Rolesville</p>
+        <div class="group">
+          <p class="text-4xl md:text-5xl font-light mb-2 text-[--color-cream] group-hover:text-[--color-gold] transition-colors" style="font-family: var(--font-display);">♥</p>
+          <p class="text-xs text-[--color-cream]/60 uppercase tracking-widest">Downtown<br class="hidden md:block" /> Rolesville</p>
         </div>
       </div>
     </div>
@@ -85,42 +88,45 @@ const stylists = getHomepageStylists();
       </div>
 
       <!-- Service Cards -->
-      <div class="grid md:grid-cols-3 gap-8 mb-16" data-stagger="0.15">
+      <div class="grid md:grid-cols-3 gap-10 mb-16" data-stagger="0.15">
         <!-- Haircuts -->
-        <div class="group card p-10 text-center hover-lift border-t-4 border-t-[--color-gold] card-glow-gold" data-tilt="8">
-          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-[--color-gold]/10 flex items-center justify-center icon-ring-gold">
-            <svg class="w-8 h-8 text-[--color-gold]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <a href="/services#haircuts" class="group card p-12 text-center hover-lift rounded-2xl relative overflow-hidden" data-tilt="8">
+          <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[--color-gold] to-transparent opacity-60 group-hover:opacity-100 transition-opacity"></div>
+          <div class="w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-[--color-gold]/15 to-[--color-gold]/5 flex items-center justify-center icon-ring-gold transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+            <svg class="w-10 h-10 text-[--color-gold]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"/>
             </svg>
           </div>
           <h3 class="text-2xl mb-4 group-hover:text-[--color-gold] transition-colors" style="font-family: var(--font-display);">Haircuts</h3>
-          <p class="text-[--color-taupe] mb-6">Precision cuts tailored to your unique style, face shape, and lifestyle.</p>
-          <p class="text-3xl font-medium text-[--color-gold] text-glow-gold">From $30</p>
-        </div>
+          <p class="text-[--color-taupe] mb-8 leading-relaxed">Precision cuts tailored to your unique style, face shape, and lifestyle.</p>
+          <p class="text-3xl font-light text-[--color-charcoal] group-hover:text-[--color-gold] transition-colors" style="font-family: var(--font-display);">From <span class="font-medium">$30</span></p>
+        </a>
 
         <!-- Color -->
-        <div class="group card p-10 text-center hover-lift border-t-4 border-t-[--color-blush] card-glow-gold" data-tilt="8">
-          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-[--color-blush]/30 flex items-center justify-center icon-ring-gold">
-            <svg class="w-8 h-8 text-[--color-taupe] group-hover:text-[--color-gold] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <a href="/services#color" class="group card p-12 text-center hover-lift rounded-2xl relative overflow-hidden md:translate-y-6" data-tilt="8">
+          <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[--color-blush] to-transparent opacity-60 group-hover:opacity-100 transition-opacity"></div>
+          <div class="w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-[--color-blush]/30 to-[--color-blush]/10 flex items-center justify-center icon-ring-gold transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+            <svg class="w-10 h-10 text-[--color-taupe] group-hover:text-[--color-gold] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
             </svg>
           </div>
           <h3 class="text-2xl mb-4 group-hover:text-[--color-gold] transition-colors" style="font-family: var(--font-display);">Hair Color</h3>
-          <p class="text-[--color-taupe] mb-6">From subtle highlights to bold transformations that turn heads.</p>
-          <p class="text-3xl font-medium text-[--color-gold] text-glow-gold">From $95</p>
-        </div>
+          <p class="text-[--color-taupe] mb-8 leading-relaxed">From subtle highlights to bold transformations that turn heads.</p>
+          <p class="text-3xl font-light text-[--color-charcoal] group-hover:text-[--color-gold] transition-colors" style="font-family: var(--font-display);">From <span class="font-medium">$95</span></p>
+        </a>
 
         <!-- Treatments -->
-        <div class="group card p-10 text-center hover-lift border-t-4 border-t-[--color-taupe] card-glow-gold" data-tilt="8">
-          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-[--color-taupe]/10 flex items-center justify-center icon-ring-gold">
-            <svg class="w-8 h-8 text-[--color-taupe] group-hover:text-[--color-gold] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <a href="/services#extras" class="group card p-12 text-center hover-lift rounded-2xl relative overflow-hidden" data-tilt="8">
+          <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[--color-taupe] to-transparent opacity-40 group-hover:opacity-80 transition-opacity"></div>
+          <div class="w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-[--color-taupe]/15 to-[--color-taupe]/5 flex items-center justify-center icon-ring-gold transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+            <svg class="w-10 h-10 text-[--color-taupe] group-hover:text-[--color-gold] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
             </svg>
           </div>
           <h3 class="text-2xl mb-4 group-hover:text-[--color-gold] transition-colors" style="font-family: var(--font-display);">Treatments</h3>
-          <p class="text-[--color-taupe] mb-6">Brazilian blowouts and specialty treatments for silky, frizz-free hair.</p>
-          <p class="text-3xl font-medium text-[--color-gold] text-glow-gold">From $325</p>
-        </div>
+          <p class="text-[--color-taupe] mb-8 leading-relaxed">Brazilian blowouts and specialty treatments for silky, frizz-free hair.</p>
+          <p class="text-3xl font-light text-[--color-charcoal] group-hover:text-[--color-gold] transition-colors" style="font-family: var(--font-display);">From <span class="font-medium">$325</span></p>
+        </a>
       </div>
 
       <div class="text-center" data-reveal>
@@ -174,44 +180,86 @@ const stylists = getHomepageStylists();
   </section>
 
   <!-- Testimonials -->
-  <section class="py-24 px-6 bg-[--color-cream-dark]">
+  <section class="py-32 px-6 bg-[--color-cream-dark]">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16">
+      <div class="text-center mb-20">
         <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-4 block">What Clients Say</span>
         <h2 class="display-md" style="font-family: var(--font-display);">
           Loved by our community
         </h2>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white p-8 rounded-xl shadow-sm">
-          <div class="flex gap-1 mb-4 text-[--color-gold]" role="img" aria-label="5 out of 5 stars">
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="group bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative">
+          <!-- Decorative quote -->
+          <div class="absolute -top-4 left-8 w-10 h-10 bg-[--color-gold] rounded-full flex items-center justify-center shadow-lg">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+            </svg>
+          </div>
+          <div class="flex gap-1 mb-6 text-[--color-gold] text-xl" role="img" aria-label="5 out of 5 stars">
             <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
           </div>
-          <p class="text-[--color-taupe] mb-6 italic">
+          <p class="text-[--color-charcoal-light] mb-8 text-lg leading-relaxed" style="font-family: var(--font-display);">
             "Virginia is amazing! She listens to what you want and delivers every time. I've been coming here for years and wouldn't go anywhere else."
           </p>
-          <p class="font-medium">— Sarah M.</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-[--color-gold]/10 flex items-center justify-center">
+              <span class="text-[--color-gold] font-medium">S</span>
+            </div>
+            <div>
+              <p class="font-medium text-[--color-charcoal]">Sarah M.</p>
+              <p class="text-sm text-[--color-taupe]">Loyal client</p>
+            </div>
+          </div>
         </div>
 
-        <div class="bg-white p-8 rounded-xl shadow-sm">
-          <div class="flex gap-1 mb-4 text-[--color-gold]" role="img" aria-label="5 out of 5 stars">
+        <div class="group bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative md:translate-y-4">
+          <!-- Decorative quote -->
+          <div class="absolute -top-4 left-8 w-10 h-10 bg-[--color-gold] rounded-full flex items-center justify-center shadow-lg">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+            </svg>
+          </div>
+          <div class="flex gap-1 mb-6 text-[--color-gold] text-xl" role="img" aria-label="5 out of 5 stars">
             <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
           </div>
-          <p class="text-[--color-taupe] mb-6 italic">
+          <p class="text-[--color-charcoal-light] mb-8 text-lg leading-relaxed" style="font-family: var(--font-display);">
             "Best salon in Rolesville! Kim did an incredible job with my highlights. The atmosphere is so welcoming and relaxing."
           </p>
-          <p class="font-medium">— Jennifer L.</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-[--color-gold]/10 flex items-center justify-center">
+              <span class="text-[--color-gold] font-medium">J</span>
+            </div>
+            <div>
+              <p class="font-medium text-[--color-charcoal]">Jennifer L.</p>
+              <p class="text-sm text-[--color-taupe]">Loyal client</p>
+            </div>
+          </div>
         </div>
 
-        <div class="bg-white p-8 rounded-xl shadow-sm">
-          <div class="flex gap-1 mb-4 text-[--color-gold]" role="img" aria-label="5 out of 5 stars">
+        <div class="group bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative">
+          <!-- Decorative quote -->
+          <div class="absolute -top-4 left-8 w-10 h-10 bg-[--color-gold] rounded-full flex items-center justify-center shadow-lg">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+            </svg>
+          </div>
+          <div class="flex gap-1 mb-6 text-[--color-gold] text-xl" role="img" aria-label="5 out of 5 stars">
             <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
           </div>
-          <p class="text-[--color-taupe] mb-6 italic">
+          <p class="text-[--color-charcoal-light] mb-8 text-lg leading-relaxed" style="font-family: var(--font-display);">
             "Alyssa transformed my hair! Her color work is truly artistic. I get compliments everywhere I go now."
           </p>
-          <p class="font-medium">— Michelle R.</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-[--color-gold]/10 flex items-center justify-center">
+              <span class="text-[--color-gold] font-medium">M</span>
+            </div>
+            <div>
+              <p class="font-medium text-[--color-charcoal]">Michelle R.</p>
+              <p class="text-sm text-[--color-taupe]">Loyal client</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

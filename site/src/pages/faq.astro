@@ -65,13 +65,15 @@ const faqs = [
   })} />
 
   <!-- Hero -->
-  <section class="pt-16 pb-24 px-6">
-    <div class="max-w-4xl mx-auto text-center">
+  <section class="pt-20 pb-28 px-6 relative overflow-hidden">
+    <!-- Ambient decoration -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-[--color-gold]/5 blur-3xl"></div>
+    <div class="max-w-4xl mx-auto text-center relative">
       <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-4 block">Help Center</span>
       <h1 class="display-lg mb-8" style="font-family: var(--font-display);">
         Frequently Asked Questions
       </h1>
-      <p class="text-xl text-[--color-taupe] max-w-2xl mx-auto">
+      <p class="text-xl text-[--color-taupe] max-w-2xl mx-auto leading-relaxed">
         Everything you need to know about visiting our salon.
       </p>
     </div>
@@ -109,19 +111,24 @@ const faqs = [
   </section>
 
   <!-- Still Have Questions CTA -->
-  <section class="py-24 px-6 text-center">
-    <div class="max-w-2xl mx-auto">
-      <h2 class="display-md mb-6" style="font-family: var(--font-display);">
+  <section class="py-32 px-6 text-center bg-gradient-to-b from-[--color-cream-dark] to-[--color-cream] relative overflow-hidden">
+    <!-- Ambient gold glow background -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-[--color-gold]/10 blur-3xl"></div>
+    </div>
+    <div class="max-w-3xl mx-auto relative">
+      <div class="divider mx-auto mb-8"></div>
+      <h2 class="display-md mb-8 text-balance" style="font-family: var(--font-display);">
         Still have questions?
       </h2>
-      <p class="text-[--color-taupe] text-lg mb-10">
+      <p class="text-xl text-[--color-taupe] mb-12 max-w-xl mx-auto">
         We're happy to help. Give us a call or send us a message.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="tel:9196718353" class="btn btn-primary">
+        <a href="tel:9196718353" class="btn btn-primary text-base px-10 py-4">
           Call (919) 671-8353
         </a>
-        <a href="/contact" class="btn btn-outline">
+        <a href="/contact" class="btn btn-outline text-base px-10 py-4">
           Contact Us
         </a>
       </div>

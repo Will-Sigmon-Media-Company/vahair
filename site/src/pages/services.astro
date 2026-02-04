@@ -72,20 +72,22 @@ const alyssaExtensions = [
   description="Haircuts from $30, color from $95, Brazilian blowouts & more. View our full service menu and pricing."
 >
   <!-- Hero -->
-  <section class="pt-16 pb-24 px-6">
-    <div class="max-w-4xl mx-auto text-center">
+  <section class="pt-20 pb-28 px-6 relative overflow-hidden">
+    <!-- Ambient decoration -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-[--color-gold]/5 blur-3xl"></div>
+    <div class="max-w-4xl mx-auto text-center relative">
       <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-4 block">Menu</span>
       <h1 class="display-lg mb-8" style="font-family: var(--font-display);">
         Our Services
       </h1>
-      <p class="text-xl text-[--color-taupe] max-w-2xl mx-auto">
+      <p class="text-xl text-[--color-taupe] max-w-2xl mx-auto leading-relaxed">
         From precision cuts to stunning color transformations, we offer a full range of hair services.
       </p>
     </div>
   </section>
 
   <!-- Haircuts -->
-  <section class="py-20 px-6">
+  <section id="haircuts" class="py-24 px-6 scroll-mt-24">
     <div class="max-w-4xl mx-auto">
       <div class="flex items-center gap-6 mb-12">
         <span class="text-6xl font-light text-[--color-gold]" style="font-family: var(--font-display);">01</span>
@@ -119,7 +121,7 @@ const alyssaExtensions = [
   </section>
 
   <!-- Color -->
-  <section class="py-20 px-6 bg-[--color-cream-dark]">
+  <section id="color" class="py-24 px-6 bg-[--color-cream-dark] scroll-mt-24">
     <div class="max-w-4xl mx-auto">
       <div class="flex items-center gap-6 mb-12">
         <span class="text-6xl font-light text-[--color-gold]" style="font-family: var(--font-display);">02</span>
@@ -157,7 +159,7 @@ const alyssaExtensions = [
   </section>
 
   <!-- Extras -->
-  <section class="py-20 px-6">
+  <section id="extras" class="py-24 px-6 scroll-mt-24">
     <div class="max-w-4xl mx-auto">
       <div class="flex items-center gap-6 mb-12">
         <span class="text-6xl font-light text-[--color-gold]" style="font-family: var(--font-display);">03</span>
@@ -191,7 +193,7 @@ const alyssaExtensions = [
   </section>
 
   <!-- Alyssa's Services -->
-  <section class="py-20 px-6 bg-[--color-cream-dark]">
+  <section id="alyssa" class="py-24 px-6 bg-[--color-cream-dark] scroll-mt-24">
     <div class="max-w-4xl mx-auto">
       <div class="flex items-center gap-6 mb-6">
         <span class="text-6xl font-light text-[--color-gold]" style="font-family: var(--font-display);">04</span>
@@ -278,14 +280,17 @@ const alyssaExtensions = [
   </section>
 
   <!-- Disclaimer & CTA -->
-  <section class="py-24 px-6 bg-[--color-charcoal] text-[--color-cream]">
-    <div class="max-w-3xl mx-auto text-center">
-      <p class="text-lg text-[--color-cream]/70 mb-10 max-w-2xl mx-auto">
+  <section class="py-28 px-6 bg-[--color-charcoal] text-[--color-cream] relative overflow-hidden">
+    <!-- Ambient glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-[--color-gold]/10 blur-3xl"></div>
+    <div class="max-w-3xl mx-auto text-center relative">
+      <div class="divider mx-auto mb-10" style="background: linear-gradient(90deg, var(--color-gold), transparent);"></div>
+      <p class="text-lg text-[--color-cream]/70 mb-10 max-w-2xl mx-auto leading-relaxed">
         All prices are subject to change per consultation before service. Final pricing may vary based on hair length, thickness, and condition.
       </p>
       <a
         href="/book"
-        class="btn btn-primary bg-[--color-cream] text-[--color-charcoal] border-[--color-cream] hover:bg-[--color-gold] hover:border-[--color-gold]"
+        class="btn btn-primary bg-[--color-cream] text-[--color-charcoal] border-[--color-cream] hover:bg-[--color-gold] hover:border-[--color-gold] text-base px-10 py-4"
       >
         Book Your Appointment
       </a>

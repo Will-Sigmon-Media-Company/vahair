@@ -7,69 +7,93 @@ import Layout from '../layouts/Layout.astro';
   description="Visit us at 104 South Main Street, Rolesville NC. Open Tue-Fri. Call (919) 671-8353 or email us."
 >
   <!-- Hero -->
-  <section class="pt-16 pb-24 px-6">
-    <div class="max-w-4xl mx-auto text-center">
+  <section class="pt-20 pb-28 px-6 relative overflow-hidden">
+    <!-- Ambient decoration -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-[--color-gold]/5 blur-3xl"></div>
+    <div class="max-w-4xl mx-auto text-center relative">
       <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-4 block">Get in Touch</span>
       <h1 class="display-lg mb-8" style="font-family: var(--font-display);">
         Contact Us
       </h1>
-      <p class="text-xl text-[--color-taupe] max-w-2xl mx-auto">
+      <p class="text-xl text-[--color-taupe] max-w-2xl mx-auto leading-relaxed">
         We'd love to hear from you. Reach out or stop by!
       </p>
     </div>
   </section>
 
   <!-- Contact Grid -->
-  <section class="py-20 px-6">
+  <section class="py-24 px-6">
     <div class="max-w-7xl mx-auto">
-      <div class="grid lg:grid-cols-2 gap-16">
+      <div class="grid lg:grid-cols-2 gap-20">
         <!-- Contact Info -->
         <div>
           <h2 class="text-3xl mb-12" style="font-family: var(--font-display);">
             Reach Out
           </h2>
 
-          <div class="space-y-10">
+          <div class="space-y-12">
             <!-- Phone -->
-            <div class="group">
-              <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block">Phone</span>
-              <a
-                href="tel:9196718353"
-                class="text-3xl hover:text-[--color-gold] transition-colors"
-                style="font-family: var(--font-display);"
-              >
-                (919) 671-8353
-              </a>
+            <div class="group flex items-start gap-6">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[--color-gold]/15 to-[--color-gold]/5 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+                <svg class="w-6 h-6 text-[--color-gold]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <div>
+                <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block">Phone</span>
+                <a
+                  href="tel:9196718353"
+                  class="text-3xl hover:text-[--color-gold] transition-colors"
+                  style="font-family: var(--font-display);"
+                >
+                  (919) 671-8353
+                </a>
+              </div>
             </div>
 
             <!-- Email -->
-            <div class="group">
-              <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block">Email</span>
-              <a
-                href="mailto:vacohairstudio@gmail.com"
-                class="text-2xl hover:text-[--color-gold] transition-colors"
-                style="font-family: var(--font-display);"
-              >
-                vacohairstudio@gmail.com
-              </a>
+            <div class="group flex items-start gap-6">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[--color-gold]/15 to-[--color-gold]/5 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+                <svg class="w-6 h-6 text-[--color-gold]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block">Email</span>
+                <a
+                  href="mailto:vacohairstudio@gmail.com"
+                  class="text-2xl hover:text-[--color-gold] transition-colors"
+                  style="font-family: var(--font-display);"
+                >
+                  vacohairstudio@gmail.com
+                </a>
+              </div>
             </div>
 
             <!-- Address -->
-            <div>
-              <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block">Location</span>
-              <address class="not-italic text-2xl mb-4" style="font-family: var(--font-display);">
-                104 South Main Street<br />
-                Rolesville, NC 27571
-              </address>
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=104+South+Main+Street+Rolesville+NC+27571"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Get directions to Virginia Page & Co. on Google Maps (opens in new window)"
-                class="btn btn-ghost"
-              >
-                Get Directions
-              </a>
+            <div class="group flex items-start gap-6">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[--color-gold]/15 to-[--color-gold]/5 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+                <svg class="w-6 h-6 text-[--color-gold]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <div>
+                <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block">Location</span>
+                <address class="not-italic text-2xl mb-4" style="font-family: var(--font-display);">
+                  104 South Main Street<br />
+                  Rolesville, NC 27571
+                </address>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=104+South+Main+Street+Rolesville+NC+27571"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Get directions to Virginia Page & Co. on Google Maps (opens in new window)"
+                  class="btn btn-ghost"
+                >
+                  Get Directions
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -80,25 +104,25 @@ import Layout from '../layouts/Layout.astro';
             Business Hours
           </h2>
 
-          <div class="bg-[--color-cream-dark] p-10">
+          <div class="bg-white p-10 rounded-2xl shadow-sm">
             <div class="space-y-4">
-              <div class="flex justify-between items-center py-3 border-b border-[--color-blush] text-[--color-taupe]">
+              <div class="flex justify-between items-center py-3 border-b border-[--color-cream-dark] text-[--color-taupe]">
                 <span>Monday</span>
                 <span>Closed</span>
               </div>
-              <div class="flex justify-between items-center py-3 border-b border-[--color-blush]">
+              <div class="flex justify-between items-center py-3 border-b border-[--color-cream-dark]">
                 <span class="font-medium">Tuesday</span>
                 <span>10:15 AM – 5:00 PM</span>
               </div>
-              <div class="flex justify-between items-center py-3 border-b border-[--color-blush]">
+              <div class="flex justify-between items-center py-3 border-b border-[--color-cream-dark]">
                 <span class="font-medium">Wednesday</span>
                 <span>10:15 AM – 4:00 PM</span>
               </div>
-              <div class="flex justify-between items-center py-3 border-b border-[--color-blush]">
+              <div class="flex justify-between items-center py-3 border-b border-[--color-cream-dark]">
                 <span class="font-medium">Thursday</span>
                 <span>10:30 AM – 6:00 PM</span>
               </div>
-              <div class="flex justify-between items-center py-3 border-b border-[--color-blush]">
+              <div class="flex justify-between items-center py-3 border-b border-[--color-cream-dark]">
                 <span class="font-medium">Friday</span>
                 <span>10:00 AM – 2:00 PM</span>
               </div>
@@ -138,15 +162,20 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- CTA -->
-  <section class="py-24 px-6 text-center">
-    <div class="max-w-2xl mx-auto">
-      <h2 class="display-md mb-6" style="font-family: var(--font-display);">
+  <section class="py-32 px-6 text-center bg-gradient-to-b from-[--color-cream-dark] to-[--color-cream] relative overflow-hidden">
+    <!-- Ambient gold glow background -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-[--color-gold]/10 blur-3xl"></div>
+    </div>
+    <div class="max-w-3xl mx-auto relative">
+      <div class="divider mx-auto mb-8"></div>
+      <h2 class="display-md mb-8 text-balance" style="font-family: var(--font-display);">
         Ready to book?
       </h2>
-      <p class="text-[--color-taupe] text-lg mb-10">
+      <p class="text-xl text-[--color-taupe] mb-12 max-w-xl mx-auto">
         Schedule your appointment online and let us help you feel beautiful.
       </p>
-      <a href="/book" class="btn btn-primary">
+      <a href="/book" class="btn btn-primary text-base px-10 py-4 glow-pulse hover:shadow-[0_0_40px_rgba(196,169,98,0.5)]">
         Book Your Appointment
       </a>
     </div>

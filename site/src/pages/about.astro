@@ -8,13 +8,15 @@ import SmartBookButton from '../components/booking/SmartBookButton.astro';
   description="Meet Virginia and Kim - over 30 years combined experience bringing out your best look in Rolesville, NC."
 >
   <!-- Hero -->
-  <section class="pt-16 pb-24 px-6">
-    <div class="max-w-4xl mx-auto text-center">
+  <section class="pt-20 pb-28 px-6 relative overflow-hidden">
+    <!-- Ambient decoration -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-[--color-gold]/5 blur-3xl"></div>
+    <div class="max-w-4xl mx-auto text-center relative">
       <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-4 block">Our Story</span>
       <h1 class="display-lg mb-8" style="font-family: var(--font-display);">
         Meet Your Stylists
       </h1>
-      <p class="text-xl text-[--color-taupe] max-w-2xl mx-auto text-balance">
+      <p class="text-xl text-[--color-taupe] max-w-2xl mx-auto text-balance leading-relaxed">
         Three talented stylists, one shared passion: helping you feel beautiful.
       </p>
     </div>
@@ -194,10 +196,13 @@ import SmartBookButton from '../components/booking/SmartBookButton.astro';
   </section>
 
   <!-- Our Story -->
-  <section class="py-32 px-6">
-    <div class="max-w-4xl mx-auto text-center">
+  <section class="py-32 px-6 bg-[--color-cream-dark] relative overflow-hidden">
+    <!-- Ambient decoration -->
+    <div class="absolute top-1/4 left-0 w-64 h-64 rounded-full bg-[--color-gold]/5 blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-0 w-64 h-64 rounded-full bg-[--color-gold]/5 blur-3xl"></div>
+    <div class="max-w-4xl mx-auto text-center relative">
       <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-4 block">Since 2020</span>
-      <h2 class="display-md mb-8" style="font-family: var(--font-display);">
+      <h2 class="display-md mb-10" style="font-family: var(--font-display);">
         Our Story
       </h2>
       <p class="text-xl text-[--color-taupe] leading-relaxed mb-6 max-w-3xl mx-auto">
@@ -206,17 +211,20 @@ import SmartBookButton from '../components/booking/SmartBookButton.astro';
       <p class="text-xl text-[--color-taupe] leading-relaxed mb-12 max-w-3xl mx-auto">
         With over 40 years of combined experience, we've had the privilege of helping countless clients discover styles that make them feel like the best version of themselves.
       </p>
-      <a href="/book" class="btn btn-primary">
+      <a href="/book" class="btn btn-primary text-base px-10 py-4">
         Book Your Appointment
       </a>
     </div>
   </section>
 
   <!-- Quote Banner -->
-  <section class="py-24 px-6 bg-[--color-charcoal] text-[--color-cream]">
-    <div class="max-w-4xl mx-auto text-center">
+  <section class="py-28 px-6 bg-[--color-charcoal] text-[--color-cream] relative overflow-hidden">
+    <!-- Ambient glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-[--color-gold]/10 blur-3xl"></div>
+    <div class="max-w-4xl mx-auto text-center relative">
+      <div class="divider mx-auto mb-10" style="background: linear-gradient(90deg, var(--color-gold), transparent);"></div>
       <blockquote>
-        <p class="display-md italic mb-8" style="font-family: var(--font-display);">
+        <p class="display-md italic text-glow-gold" style="font-family: var(--font-display);">
           "If it makes you feel beautiful<span class="text-[--color-gold]">...</span> do it."
         </p>
       </blockquote>
