@@ -26,7 +26,7 @@ export const STYLISTS: Stylist[] = [
     image: '/images/virginia.jpg',
     role: 'Owner & Stylist',
     experience: '14 years of experience',
-    imagePosition: 'object-top',
+    imagePosition: 'object-[center_20%]',
     bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=13484734',
   },
   {
@@ -36,7 +36,7 @@ export const STYLISTS: Stylist[] = [
     image: '/images/kim.jpg',
     role: 'Stylist',
     experience: '20 years of experience',
-    imagePosition: 'object-center',
+    imagePosition: 'object-[center_25%]',
     bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=13484780',
   },
   {
@@ -46,7 +46,7 @@ export const STYLISTS: Stylist[] = [
     image: '/images/alyssa.jpg',
     role: 'Color Specialist',
     experience: '6 years of experience',
-    imagePosition: 'object-top',
+    imagePosition: 'object-[center_15%]',
     bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=13484805',
   },
 ];
