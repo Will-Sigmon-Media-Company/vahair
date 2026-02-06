@@ -29,14 +29,14 @@ United States
 | Day | Hours |
 |-----|-------|
 | Monday | Closed |
-| Tuesday | 10:15 AM - 5:00 PM |
-| Wednesday | 10:15 AM - 4:00 PM |
-| Thursday | 10:30 AM - 6:00 PM |
-| Friday | 10:00 AM - 2:00 PM |
+| Tuesday | 9:30 AM - 5:00 PM |
+| Wednesday | 9:30 AM - 5:00 PM |
+| Thursday | 9:30 AM - 4:00 PM |
+| Friday | 9:30 AM - 2:00 PM |
 | Saturday | Closed |
 | Sunday | Closed |
 
-**Note:** Unusual start times (10:15, 10:30) - may want to simplify for new site or keep as-is for appointment buffer time.
+**Note:** Hours updated to match website business hours (Tue-Fri).
 
 ---
 
