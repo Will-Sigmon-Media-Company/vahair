@@ -25,3 +25,6 @@ npm-debug.log*
 .cache/
 .vercel
 .env*.local
+
+# Local artifacts
+output/

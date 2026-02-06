@@ -7,27 +7,31 @@ const navLinks = [
 ---
 
 <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+  <!-- Decorative hairline to keep the header feeling intentional over photos -->
+  <div class="gold-accent-line opacity-60"></div>
   <nav class="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
     <!-- Logo -->
     <a href="/" class="group relative z-10" data-magnetic="0.2">
       <img
         src="/images/logo-header.png"
         alt="Virginia Page & Co. Hair Studio"
-        class="h-20 md:h-32 lg:h-48 w-auto"
+        class="h-16 md:h-24 lg:h-32 w-auto"
       />
     </a>
 
     <!-- Desktop Nav -->
-    <div class="hidden md:flex items-center gap-12">
-      {navLinks.map(link => (
-        <a
-          href={link.href}
-          class="text-sm tracking-widest uppercase link-underline opacity-80 hover:opacity-100 hover:text-[--color-gold] transition-all duration-300"
-        >
-          {link.label}
-        </a>
-      ))}
-      <a href="/book" class="btn btn-primary ml-4 hover:shadow-[0_0_25px_rgba(196,169,98,0.4)] transition-shadow duration-300">
+    <div class="hidden md:flex items-center gap-4">
+      <div class="nav-capsule flex items-center gap-10 px-8 py-3">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class="text-sm tracking-widest uppercase link-underline opacity-80 hover:opacity-100 hover:text-[--color-gold] transition-all duration-300"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+      <a href="/book" class="btn btn-primary btn-header-cta hover:shadow-[0_0_25px_rgba(196,169,98,0.35)] transition-shadow duration-300">
         Book Now
       </a>
     </div>
@@ -68,15 +72,40 @@ const navLinks = [
 <div class="h-24"></div>
 
 <style>
+  /* Make the header readable on the hero image without feeling heavy. */
+  #header {
+    background: linear-gradient(
+      to bottom,
+      rgba(250, 247, 242, 0.78),
+      rgba(250, 247, 242, 0.55)
+    );
+    backdrop-filter: blur(12px) saturate(1.1);
+    box-shadow: 0 1px 0 rgba(45, 42, 38, 0.06);
+  }
+
   #header.scrolled {
-    background: rgba(250, 247, 242, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(250, 247, 242, 0.96);
+    backdrop-filter: blur(12px) saturate(1.1);
     box-shadow: 0 1px 0 rgba(45, 42, 38, 0.05);
   }
-  
+
   #header.scrolled nav {
     padding-top: 1rem;
     padding-bottom: 1rem;
+  }
+
+  /* Capsule nav is a subtle "signature" that doesn't read as Squarespace default. */
+  .nav-capsule {
+    background: rgba(250, 247, 242, 0.65);
+    border: 1px solid rgba(45, 42, 38, 0.08);
+    border-radius: 999px;
+    box-shadow: 0 10px 30px -28px rgba(45, 42, 38, 0.35);
+    backdrop-filter: blur(10px);
+  }
+
+  /* Slightly tighter header CTA so it doesn't overpower the nav capsule. */
+  .btn-header-cta {
+    padding: 0.9rem 2.1rem;
   }
   
   #mobile-menu {
