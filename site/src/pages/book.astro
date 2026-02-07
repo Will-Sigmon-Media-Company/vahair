@@ -131,7 +131,7 @@ const stylists = getAllStylists();
       <div class="acuity-container relative">
         <iframe
           id="acuity-embed"
-          src="https://app.acuityscheduling.com/schedule.php?owner=38274584"
+          src="https://app.acuityscheduling.com/schedule.php?owner=38274584&showHeader=false"
           title="Schedule Appointment with Virginia Page & Co. Hair Studio"
           width="100%"
           frameBorder="0"
@@ -351,7 +351,7 @@ const stylists = getAllStylists();
   // Handle stylist filter selection
   function updateScheduler(stylistKey: string) {
     const calendarId = CALENDARS[stylistKey] || '';
-    const baseUrl = 'https://app.acuityscheduling.com/schedule.php?owner=38274584';
+    const baseUrl = 'https://app.acuityscheduling.com/schedule.php?owner=38274584&showHeader=false';
     const newUrl = calendarId ? `${baseUrl}&calendarID=${calendarId}` : baseUrl;
 
     if (iframe) {
