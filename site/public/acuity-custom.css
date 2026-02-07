@@ -632,7 +632,7 @@ a:hover {
 
 /* Hide Acuity branding (if allowed by plan) */
 .powered-by-acuity {
-  opacity: 0.5 !important;
+  display: none !important;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
