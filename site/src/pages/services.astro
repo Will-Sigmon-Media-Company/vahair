@@ -75,13 +75,13 @@ const alyssaExtensions = [
   <!-- Hero -->
   <section class="pt-20 pb-28 px-6 relative overflow-hidden" data-particles="6" data-particle-color="rgba(196, 169, 98, 0.15)">
     <!-- Ambient decoration -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-[--color-gold]/5 blur-3xl"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-[var(--color-gold)]/5 blur-3xl"></div>
     <div class="max-w-4xl mx-auto text-center relative" data-reveal>
-      <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-4 block">Menu</span>
+      <span class="text-xs tracking-widest uppercase text-[var(--color-gold)] mb-4 block">Menu</span>
       <h1 class="display-lg mb-8" style="font-family: var(--font-display);">
         Our Services
       </h1>
-      <p class="text-xl text-[--color-taupe] max-w-2xl mx-auto leading-relaxed">
+      <p class="text-xl text-[var(--color-taupe)] max-w-2xl mx-auto leading-relaxed">
         From precision cuts to stunning color transformations, we offer a full range of hair services.
       </p>
     </div>
@@ -91,18 +91,18 @@ const alyssaExtensions = [
   <section id="haircuts" class="py-24 px-6 scroll-mt-24">
     <div class="max-w-4xl mx-auto">
       <div class="flex items-center gap-6 mb-12" data-reveal>
-        <span class="text-6xl font-light text-[--color-gold]" style="font-family: var(--font-display);">01</span>
+        <span class="text-6xl font-light text-[var(--color-gold)]" style="font-family: var(--font-display);">01</span>
         <div>
           <h2 class="text-3xl" style="font-family: var(--font-display);">Haircuts</h2>
-          <p class="text-[--color-taupe]">Precision cuts tailored to you</p>
+          <p class="text-[var(--color-taupe)]">Precision cuts tailored to you</p>
         </div>
       </div>
 
       <div class="space-y-0">
         {haircuts.map(service => (
-          <div class="group flex justify-between items-baseline py-5 border-b border-[--color-cream-dark] hover:border-[--color-gold] transition-colors">
-            <span class="text-lg group-hover:text-[--color-charcoal] transition-colors">{service.name}</span>
-            <span class="text-lg font-light text-[--color-taupe] group-hover:text-[--color-gold] transition-colors">{service.price}</span>
+          <div class="group flex justify-between items-baseline py-5 border-b border-[var(--color-cream-dark)] hover:border-[var(--color-gold)] transition-colors">
+            <span class="text-lg group-hover:text-[var(--color-charcoal)] transition-colors">{service.name}</span>
+            <span class="text-lg font-light text-[var(--color-taupe)] group-hover:text-[var(--color-gold)] transition-colors">{service.price}</span>
           </div>
         ))}
       </div>
@@ -122,26 +122,26 @@ const alyssaExtensions = [
   </section>
 
   <!-- Color -->
-  <section id="color" class="py-24 px-6 bg-[--color-cream-dark] scroll-mt-24">
+  <section id="color" class="py-24 px-6 bg-[var(--color-cream-dark)] scroll-mt-24">
     <div class="max-w-4xl mx-auto">
       <div class="flex items-center gap-6 mb-12" data-reveal>
-        <span class="text-6xl font-light text-[--color-gold]" style="font-family: var(--font-display);">02</span>
+        <span class="text-6xl font-light text-[var(--color-gold)]" style="font-family: var(--font-display);">02</span>
         <div>
           <h2 class="text-3xl" style="font-family: var(--font-display);">Hair Color</h2>
-          <p class="text-[--color-taupe]">From subtle to stunning</p>
+          <p class="text-[var(--color-taupe)]">From subtle to stunning</p>
         </div>
       </div>
 
       <div class="space-y-0">
         {colorServices.map(service => (
-          <div class="group flex justify-between items-baseline py-5 border-b border-[--color-blush] hover:border-[--color-gold] transition-colors">
-            <span class="text-lg group-hover:text-[--color-charcoal] transition-colors">{service.name}</span>
-            <span class="text-lg font-light text-[--color-taupe] group-hover:text-[--color-gold] transition-colors">{service.price}</span>
+          <div class="group flex justify-between items-baseline py-5 border-b border-[var(--color-blush)] hover:border-[var(--color-gold)] transition-colors">
+            <span class="text-lg group-hover:text-[var(--color-charcoal)] transition-colors">{service.name}</span>
+            <span class="text-lg font-light text-[var(--color-taupe)] group-hover:text-[var(--color-gold)] transition-colors">{service.price}</span>
           </div>
         ))}
       </div>
 
-      <p class="mt-6 text-sm text-[--color-taupe] italic">
+      <p class="mt-6 text-sm text-[var(--color-taupe)] italic">
         * Color services do not include haircut or blowdry. These may be added as separate services.
       </p>
 
@@ -163,18 +163,18 @@ const alyssaExtensions = [
   <section id="extras" class="py-24 px-6 scroll-mt-24">
     <div class="max-w-4xl mx-auto">
       <div class="flex items-center gap-6 mb-12" data-reveal>
-        <span class="text-6xl font-light text-[--color-gold]" style="font-family: var(--font-display);">03</span>
+        <span class="text-6xl font-light text-[var(--color-gold)]" style="font-family: var(--font-display);">03</span>
         <div>
           <h2 class="text-3xl" style="font-family: var(--font-display);">Extras</h2>
-          <p class="text-[--color-taupe]">Treatments & finishing touches</p>
+          <p class="text-[var(--color-taupe)]">Treatments & finishing touches</p>
         </div>
       </div>
 
       <div class="space-y-0">
         {extras.map(service => (
-          <div class="group flex justify-between items-baseline py-5 border-b border-[--color-cream-dark] hover:border-[--color-gold] transition-colors">
-            <span class="text-lg group-hover:text-[--color-charcoal] transition-colors">{service.name}</span>
-            <span class="text-lg font-light text-[--color-taupe] group-hover:text-[--color-gold] transition-colors">{service.price}</span>
+          <div class="group flex justify-between items-baseline py-5 border-b border-[var(--color-cream-dark)] hover:border-[var(--color-gold)] transition-colors">
+            <span class="text-lg group-hover:text-[var(--color-charcoal)] transition-colors">{service.name}</span>
+            <span class="text-lg font-light text-[var(--color-taupe)] group-hover:text-[var(--color-gold)] transition-colors">{service.price}</span>
           </div>
         ))}
       </div>
@@ -194,17 +194,17 @@ const alyssaExtensions = [
   </section>
 
   <!-- Alyssa's Services -->
-  <section id="alyssa" class="py-24 px-6 bg-[--color-cream-dark] scroll-mt-24">
+  <section id="alyssa" class="py-24 px-6 bg-[var(--color-cream-dark)] scroll-mt-24">
     <div class="max-w-4xl mx-auto">
       <div class="flex items-center gap-6 mb-6" data-reveal>
-        <span class="text-6xl font-light text-[--color-gold]" style="font-family: var(--font-display);">04</span>
+        <span class="text-6xl font-light text-[var(--color-gold)]" style="font-family: var(--font-display);">04</span>
         <div>
           <h2 class="text-3xl" style="font-family: var(--font-display);">Alyssa's Services</h2>
-          <p class="text-[--color-taupe]">Lived-in color & dimensional blonding specialist</p>
+          <p class="text-[var(--color-taupe)]">Lived-in color & dimensional blonding specialist</p>
         </div>
       </div>
 
-      <p class="text-sm text-[--color-taupe] italic mb-12">
+      <p class="text-sm text-[var(--color-taupe)] italic mb-12">
         Alyssa specializes in adult women's hair services only. All lightening services include a glaze. Add root coverage to any lightening appointment for additional $50.
       </p>
 
@@ -212,9 +212,9 @@ const alyssaExtensions = [
       <h3 class="text-xl mb-6" style="font-family: var(--font-display);">Lightening Services</h3>
       <div class="space-y-0 mb-12">
         {alyssaLightening.map(service => (
-          <div class="group flex justify-between items-baseline py-5 border-b border-[--color-blush] hover:border-[--color-gold] transition-colors">
-            <span class="text-lg group-hover:text-[--color-charcoal] transition-colors">{service.name}</span>
-            <span class="text-lg font-light text-[--color-taupe] group-hover:text-[--color-gold] transition-colors">{service.price}</span>
+          <div class="group flex justify-between items-baseline py-5 border-b border-[var(--color-blush)] hover:border-[var(--color-gold)] transition-colors">
+            <span class="text-lg group-hover:text-[var(--color-charcoal)] transition-colors">{service.name}</span>
+            <span class="text-lg font-light text-[var(--color-taupe)] group-hover:text-[var(--color-gold)] transition-colors">{service.price}</span>
           </div>
         ))}
       </div>
@@ -223,9 +223,9 @@ const alyssaExtensions = [
       <h3 class="text-xl mb-6" style="font-family: var(--font-display);">Color Services</h3>
       <div class="space-y-0 mb-12">
         {alyssaColor.map(service => (
-          <div class="group flex justify-between items-baseline py-5 border-b border-[--color-blush] hover:border-[--color-gold] transition-colors">
-            <span class="text-lg group-hover:text-[--color-charcoal] transition-colors">{service.name}</span>
-            <span class="text-lg font-light text-[--color-taupe] group-hover:text-[--color-gold] transition-colors">{service.price}</span>
+          <div class="group flex justify-between items-baseline py-5 border-b border-[var(--color-blush)] hover:border-[var(--color-gold)] transition-colors">
+            <span class="text-lg group-hover:text-[var(--color-charcoal)] transition-colors">{service.name}</span>
+            <span class="text-lg font-light text-[var(--color-taupe)] group-hover:text-[var(--color-gold)] transition-colors">{service.price}</span>
           </div>
         ))}
       </div>
@@ -234,9 +234,9 @@ const alyssaExtensions = [
       <h3 class="text-xl mb-6" style="font-family: var(--font-display);">Haircuts</h3>
       <div class="space-y-0 mb-12">
         {alyssaHaircuts.map(service => (
-          <div class="group flex justify-between items-baseline py-5 border-b border-[--color-blush] hover:border-[--color-gold] transition-colors">
-            <span class="text-lg group-hover:text-[--color-charcoal] transition-colors">{service.name}</span>
-            <span class="text-lg font-light text-[--color-taupe] group-hover:text-[--color-gold] transition-colors">{service.price}</span>
+          <div class="group flex justify-between items-baseline py-5 border-b border-[var(--color-blush)] hover:border-[var(--color-gold)] transition-colors">
+            <span class="text-lg group-hover:text-[var(--color-charcoal)] transition-colors">{service.name}</span>
+            <span class="text-lg font-light text-[var(--color-taupe)] group-hover:text-[var(--color-gold)] transition-colors">{service.price}</span>
           </div>
         ))}
       </div>
@@ -245,9 +245,9 @@ const alyssaExtensions = [
       <h3 class="text-xl mb-6" style="font-family: var(--font-display);">Treatments</h3>
       <div class="space-y-0 mb-12">
         {alyssaTreatments.map(service => (
-          <div class="group flex justify-between items-baseline py-5 border-b border-[--color-blush] hover:border-[--color-gold] transition-colors">
-            <span class="text-lg group-hover:text-[--color-charcoal] transition-colors">{service.name}</span>
-            <span class="text-lg font-light text-[--color-taupe] group-hover:text-[--color-gold] transition-colors">{service.price}</span>
+          <div class="group flex justify-between items-baseline py-5 border-b border-[var(--color-blush)] hover:border-[var(--color-gold)] transition-colors">
+            <span class="text-lg group-hover:text-[var(--color-charcoal)] transition-colors">{service.name}</span>
+            <span class="text-lg font-light text-[var(--color-taupe)] group-hover:text-[var(--color-gold)] transition-colors">{service.price}</span>
           </div>
         ))}
       </div>
@@ -256,13 +256,13 @@ const alyssaExtensions = [
       <h3 class="text-xl mb-6" style="font-family: var(--font-display);">Extensions</h3>
       <div class="space-y-0">
         {alyssaExtensions.map(service => (
-          <div class="group flex justify-between items-baseline py-5 border-b border-[--color-blush] hover:border-[--color-gold] transition-colors">
-            <span class="text-lg group-hover:text-[--color-charcoal] transition-colors">{service.name}</span>
-            <span class="text-lg font-light text-[--color-taupe] group-hover:text-[--color-gold] transition-colors">{service.price}</span>
+          <div class="group flex justify-between items-baseline py-5 border-b border-[var(--color-blush)] hover:border-[var(--color-gold)] transition-colors">
+            <span class="text-lg group-hover:text-[var(--color-charcoal)] transition-colors">{service.name}</span>
+            <span class="text-lg font-light text-[var(--color-taupe)] group-hover:text-[var(--color-gold)] transition-colors">{service.price}</span>
           </div>
         ))}
       </div>
-      <p class="mt-4 text-sm text-[--color-taupe] italic">
+      <p class="mt-4 text-sm text-[var(--color-taupe)] italic">
         * New extension installs require a consultation first.
       </p>
 
@@ -281,17 +281,17 @@ const alyssaExtensions = [
   </section>
 
   <!-- Disclaimer & CTA -->
-  <section class="py-28 px-6 bg-[--color-charcoal] text-[--color-cream] relative overflow-hidden" data-particles="8" data-particle-color="rgba(196, 169, 98, 0.2)">
+  <section class="py-28 px-6 bg-[var(--color-charcoal)] text-[var(--color-cream)] relative overflow-hidden" data-particles="8" data-particle-color="rgba(196, 169, 98, 0.2)">
     <!-- Ambient glow -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-[--color-gold]/10 blur-3xl"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-[var(--color-gold)]/10 blur-3xl"></div>
     <div class="max-w-3xl mx-auto text-center relative" data-reveal>
       <div class="divider mx-auto mb-10" style="background: linear-gradient(90deg, var(--color-gold), transparent);"></div>
-      <p class="text-lg text-[--color-cream]/70 mb-10 max-w-2xl mx-auto leading-relaxed">
+      <p class="text-lg text-[var(--color-cream)]/70 mb-10 max-w-2xl mx-auto leading-relaxed">
         All prices are subject to change per consultation before service. Final pricing may vary based on hair length, thickness, and condition.
       </p>
       <a
         href="/book"
-        class="btn btn-primary bg-[--color-cream] text-[--color-charcoal] border-[--color-cream] hover:bg-[--color-gold] hover:border-[--color-gold] text-base px-10 py-4"
+        class="btn btn-primary bg-[var(--color-cream)] text-[var(--color-charcoal)] border-[var(--color-cream)] hover:bg-[var(--color-gold)] hover:border-[var(--color-gold)] text-base px-10 py-4"
       >
         Book Your Appointment
       </a>

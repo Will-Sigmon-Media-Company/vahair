@@ -36,16 +36,16 @@ const acuityBaseScheduleUrl = ACUITY_BASE_SCHEDULE_URL;
   data-stylist-key={stylistKey}
 >
   <!-- Glow effect on hover - enhanced gold intensity -->
-  <div class="card-glow absolute -inset-1 rounded-xl bg-gradient-to-r from-[--color-gold]/0 via-[--color-gold]/40 to-[--color-gold]/0 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"></div>
+  <div class="card-glow absolute -inset-1 rounded-xl bg-gradient-to-r from-[var(--color-gold)]/0 via-[var(--color-gold)]/40 to-[var(--color-gold)]/0 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"></div>
 
   <!-- Card content -->
-  <div class="relative flex items-center gap-4 p-5 bg-white rounded-xl border border-[--color-cream-dark] transition-all duration-300 group-hover:border-[--color-gold]/30 group-hover:shadow-xl group-hover:shadow-[--color-gold]/5 overflow-hidden">
+  <div class="relative flex items-center gap-4 p-5 bg-white rounded-xl border border-[var(--color-cream-dark)] transition-all duration-300 group-hover:border-[var(--color-gold)]/30 group-hover:shadow-xl group-hover:shadow-[var(--color-gold)]/5 overflow-hidden">
     <!-- Shimmer effect -->
     <div class="shimmer absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent group-hover:animate-shimmer"></div>
 
     <!-- Avatar with ring effect - stronger gold glow -->
     <div class="avatar-container relative">
-      <div class="avatar-ring absolute -inset-1 rounded-full bg-gradient-to-tr from-[--color-gold] via-[--color-blush] to-[--color-gold] opacity-0 blur-sm transition-opacity duration-300 group-hover:opacity-80"></div>
+      <div class="avatar-ring absolute -inset-1 rounded-full bg-gradient-to-tr from-[var(--color-gold)] via-[var(--color-blush)] to-[var(--color-gold)] opacity-0 blur-sm transition-opacity duration-300 group-hover:opacity-80"></div>
       <img
         src={image}
         alt={fullName}
@@ -56,8 +56,8 @@ const acuityBaseScheduleUrl = ACUITY_BASE_SCHEDULE_URL;
 
     <!-- Info -->
     <div class="flex-1 min-w-0">
-      <p class="text-xs text-[--color-gold] font-medium uppercase tracking-wider mb-0.5">{role}</p>
-      <h3 class="text-lg font-semibold text-[--color-charcoal] truncate group-hover:text-[--color-gold] transition-colors duration-300">
+      <p class="text-xs text-[var(--color-gold)] font-medium uppercase tracking-wider mb-0.5">{role}</p>
+      <h3 class="text-lg font-semibold text-[var(--color-charcoal)] truncate group-hover:text-[var(--color-gold)] transition-colors duration-300">
         {fullName}
       </h3>
       <div class="mt-1">
@@ -67,9 +67,9 @@ const acuityBaseScheduleUrl = ACUITY_BASE_SCHEDULE_URL;
 
     <!-- Arrow with animation -->
     <div class="arrow-container relative w-10 h-10 flex items-center justify-center">
-      <div class="arrow-bg absolute inset-0 rounded-full bg-[--color-cream-dark] transition-all duration-300 group-hover:bg-[--color-gold] group-hover:scale-110"></div>
+      <div class="arrow-bg absolute inset-0 rounded-full bg-[var(--color-cream-dark)] transition-all duration-300 group-hover:bg-[var(--color-gold)] group-hover:scale-110"></div>
       <svg
-        class="relative w-5 h-5 text-[--color-taupe] transition-all duration-300 group-hover:text-white group-hover:translate-x-0.5"
+        class="relative w-5 h-5 text-[var(--color-taupe)] transition-all duration-300 group-hover:text-white group-hover:translate-x-0.5"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"

@@ -16,8 +16,8 @@ const { calendarId, class: className = '' } = Astro.props;
   data-calendar-id={calendarId}
 >
   <!-- Loading state -->
-  <span class="loading-state inline-flex items-center gap-2 text-xs text-[--color-taupe]">
-    <span class="loading-dot w-2 h-2 bg-[--color-cream-dark] rounded-full"></span>
+  <span class="loading-state inline-flex items-center gap-2 text-xs text-[var(--color-taupe)]">
+    <span class="loading-dot w-2 h-2 bg-[var(--color-cream-dark)] rounded-full"></span>
     <span class="loading-text">Checking...</span>
   </span>
 
@@ -25,16 +25,16 @@ const { calendarId, class: className = '' } = Astro.props;
   <span class="available-state hidden inline-flex items-center gap-2 text-xs">
     <!-- Animated pulse dot with glow -->
     <span class="availability-dot relative">
-      <span class="dot-core w-2 h-2 bg-[--color-gold] rounded-full relative z-10"></span>
-      <span class="dot-pulse absolute inset-0 bg-[--color-gold] rounded-full"></span>
-      <span class="dot-glow absolute -inset-1 bg-[--color-gold]/30 rounded-full blur-sm"></span>
+      <span class="dot-core w-2 h-2 bg-[var(--color-gold)] rounded-full relative z-10"></span>
+      <span class="dot-pulse absolute inset-0 bg-[var(--color-gold)] rounded-full"></span>
+      <span class="dot-glow absolute -inset-1 bg-[var(--color-gold)]/30 rounded-full blur-sm"></span>
     </span>
-    <span class="slot-text text-[--color-gold] font-medium">Next: —</span>
+    <span class="slot-text text-[var(--color-gold)] font-medium">Next: —</span>
   </span>
 
   <!-- Unavailable state (hidden by default) -->
-  <span class="unavailable-state hidden inline-flex items-center gap-2 text-xs text-[--color-taupe]">
-    <span class="w-2 h-2 bg-[--color-taupe]/30 rounded-full"></span>
+  <span class="unavailable-state hidden inline-flex items-center gap-2 text-xs text-[var(--color-taupe)]">
+    <span class="w-2 h-2 bg-[var(--color-taupe)]/30 rounded-full"></span>
     <span>Check availability</span>
   </span>
 

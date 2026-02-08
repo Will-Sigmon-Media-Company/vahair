@@ -26,7 +26,7 @@ const navLinks = [
         {navLinks.map(link => (
           <a
             href={link.href}
-            class="text-sm tracking-widest uppercase link-underline opacity-80 hover:opacity-100 hover:text-[--color-gold] transition-all duration-300"
+            class="text-sm tracking-widest uppercase link-underline opacity-80 hover:opacity-100 hover:text-[var(--color-gold)] transition-all duration-300"
           >
             {link.label}
           </a>
@@ -57,7 +57,7 @@ const navLinks = [
     {navLinks.map(link => (
       <a
         href={link.href}
-        class="block text-4xl mb-6 tracking-wide hover:text-[--color-gold] transition-colors"
+        class="block text-4xl mb-6 tracking-wide hover:text-[var(--color-gold)] transition-colors"
         style="font-family: var(--font-display);"
       >
         {link.label}

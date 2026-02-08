@@ -54,7 +54,7 @@ const { categories = fallbackCategories, class: className = '' } = Astro.props;
 // Category display config
 const categoryConfig: Record<string, { number: string; subtitle: string; bgClass: string }> = {
   'Haircuts': { number: '01', subtitle: 'Precision cuts tailored to you', bgClass: '' },
-  'Color': { number: '02', subtitle: 'From subtle to stunning', bgClass: 'bg-[--color-cream-dark]' },
+  'Color': { number: '02', subtitle: 'From subtle to stunning', bgClass: 'bg-[var(--color-cream-dark)]' },
   'Extras': { number: '03', subtitle: 'Treatments & finishing touches', bgClass: '' },
   'Waxing': { number: '03', subtitle: 'Treatments & finishing touches', bgClass: '' },
 };
@@ -65,19 +65,19 @@ const categoryConfig: Record<string, { number: string; subtitle: string; bgClass
     const config = categoryConfig[category.name] || {
       number: String(idx + 1).padStart(2, '0'),
       subtitle: '',
-      bgClass: idx % 2 === 1 ? 'bg-[--color-cream-dark]' : '',
+      bgClass: idx % 2 === 1 ? 'bg-[var(--color-cream-dark)]' : '',
     };
 
     return (
       <section class:list={['py-20 px-6', config.bgClass]}>
         <div class="max-w-4xl mx-auto">
           <div class="flex items-center gap-6 mb-12">
-            <span class="text-6xl font-light text-[--color-gold]" style="font-family: var(--font-display);">
+            <span class="text-6xl font-light text-[var(--color-gold)]" style="font-family: var(--font-display);">
               {config.number}
             </span>
             <div>
               <h2 class="text-3xl" style="font-family: var(--font-display);">{category.name}</h2>
-              <p class="text-[--color-taupe]">{config.subtitle}</p>
+              <p class="text-[var(--color-taupe)]">{config.subtitle}</p>
             </div>
           </div>
 
@@ -85,12 +85,12 @@ const categoryConfig: Record<string, { number: string; subtitle: string; bgClass
             {category.services.map((service) => (
               <div class:list={[
                 'group flex justify-between items-baseline py-5 border-b transition-colors',
-                config.bgClass ? 'border-[--color-blush] hover:border-[--color-gold]' : 'border-[--color-cream-dark] hover:border-[--color-gold]'
+                config.bgClass ? 'border-[var(--color-blush)] hover:border-[var(--color-gold)]' : 'border-[var(--color-cream-dark)] hover:border-[var(--color-gold)]'
               ]}>
-                <span class="text-lg group-hover:text-[--color-charcoal] transition-colors">
+                <span class="text-lg group-hover:text-[var(--color-charcoal)] transition-colors">
                   {service.name}
                 </span>
-                <span class="text-lg font-light text-[--color-taupe] group-hover:text-[--color-gold] transition-colors">
+                <span class="text-lg font-light text-[var(--color-taupe)] group-hover:text-[var(--color-gold)] transition-colors">
                   {service.price}
                 </span>
               </div>
@@ -98,7 +98,7 @@ const categoryConfig: Record<string, { number: string; subtitle: string; bgClass
           </div>
 
           {category.name === 'Color' && (
-            <p class="mt-6 text-sm text-[--color-taupe] italic">
+            <p class="mt-6 text-sm text-[var(--color-taupe)] italic">
               * Color services do not include haircut or blowdry. These may be added as separate services.
             </p>
           )}
