@@ -42,7 +42,7 @@ const fallbackServices: ServiceCategory[] = [
     slug: 'haircuts',
     services: [
       { id: 1, name: "Women's Haircut", price: '$50', duration: 45, category: 'Haircuts', description: '', bookingUrl: acuityBookingUrlForCategory('Haircuts') },
-      { id: 2, name: "Men's Haircut", price: '$30', duration: 30, category: 'Haircuts', description: '', bookingUrl: acuityBookingUrlForCategory('Haircuts') },
+      { id: 2, name: "Men's Haircut", price: '$25+', duration: 30, category: 'Haircuts', description: '', bookingUrl: acuityBookingUrlForCategory('Haircuts') },
       { id: 3, name: "Children's Cut (10 & under)", price: '$30', duration: 30, category: 'Haircuts', description: '', bookingUrl: acuityBookingUrlForCategory('Haircuts') },
       { id: 4, name: 'Blowdry Style', price: '$45+', duration: 30, category: 'Haircuts', description: '', bookingUrl: acuityBookingUrlForCategory('Haircuts') },
     ],
@@ -51,13 +51,13 @@ const fallbackServices: ServiceCategory[] = [
     name: 'Color',
     slug: 'color',
     services: [
-      { id: 5, name: 'Root Touch Up', price: '$105', duration: 90, category: 'Color', description: '', bookingUrl: acuityBookingUrlForCategory('Color') },
-      { id: 6, name: 'All Over Color', price: '$135', duration: 120, category: 'Color', description: '', bookingUrl: acuityBookingUrlForCategory('Color') },
-      { id: 7, name: 'Halo Foil', price: '$125', duration: 120, category: 'Color', description: '', bookingUrl: acuityBookingUrlForCategory('Color') },
-      { id: 8, name: 'Partial Foil', price: '$145', duration: 120, category: 'Color', description: '', bookingUrl: acuityBookingUrlForCategory('Color') },
-      { id: 9, name: 'Full Foil', price: '$185', duration: 150, category: 'Color', description: '', bookingUrl: acuityBookingUrlForCategory('Color') },
-      { id: 10, name: 'Color/Foil Combination', price: '$220', duration: 180, category: 'Color', description: '', bookingUrl: acuityBookingUrlForCategory('Color') },
-      { id: 11, name: 'Glaze (Toner)', price: '$85', duration: 45, category: 'Color', description: '', bookingUrl: acuityBookingUrlForCategory('Color') },
+      { id: 5, name: 'Root Touch Up', price: '$95+', duration: 90, category: 'Color', description: '', bookingUrl: acuityBookingUrlForCategory('Color') },
+      { id: 6, name: 'All Over Color', price: '$125+', duration: 90, category: 'Color', description: '', bookingUrl: acuityBookingUrlForCategory('Color') },
+      { id: 7, name: 'Halo Foil', price: '$130+', duration: 90, category: 'Color', description: '', bookingUrl: acuityBookingUrlForCategory('Color') },
+      { id: 8, name: 'Partial Foil', price: '$150+', duration: 90, category: 'Color', description: '', bookingUrl: acuityBookingUrlForCategory('Color') },
+      { id: 9, name: 'Full Foil', price: '$180+', duration: 120, category: 'Color', description: '', bookingUrl: acuityBookingUrlForCategory('Color') },
+      { id: 10, name: 'Color/Foil Combination', price: '$200+', duration: 120, category: 'Color', description: '', bookingUrl: acuityBookingUrlForCategory('Color') },
+      { id: 11, name: 'Glaze (Toner)', price: '$75+', duration: 60, category: 'Color', description: '', bookingUrl: acuityBookingUrlForCategory('Color') },
     ],
   },
   {
@@ -66,7 +66,7 @@ const fallbackServices: ServiceCategory[] = [
     services: [
       { id: 12, name: 'Brazilian Blowout', price: '$325+', duration: 120, category: 'Extras', description: '', bookingUrl: acuityBookingUrlForCategory('Extras') },
       { id: 13, name: 'Eyebrow Tint', price: '$45', duration: 15, category: 'Extras', description: '', bookingUrl: acuityBookingUrlForCategory('Extras') },
-      { id: 14, name: 'Eyebrow Wax', price: '$25', duration: 15, category: 'Extras', description: '', bookingUrl: acuityBookingUrlForCategory('Extras') },
+      { id: 14, name: 'Eyebrow Wax', price: '$20', duration: 15, category: 'Extras', description: '', bookingUrl: acuityBookingUrlForCategory('Extras') },
       { id: 15, name: 'Lip Wax', price: '$25', duration: 15, category: 'Extras', description: '', bookingUrl: acuityBookingUrlForCategory('Extras') },
       { id: 16, name: 'Chin Wax', price: '$25', duration: 15, category: 'Extras', description: '', bookingUrl: acuityBookingUrlForCategory('Extras') },
     ],
