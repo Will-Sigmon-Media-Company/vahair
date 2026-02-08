@@ -418,6 +418,68 @@ class CounterAnimation {
 }
 
 // ============================================
+// FLOATING PARTICLES
+// ============================================
+class FloatingParticles {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    const containers = document.querySelectorAll('[data-particles]');
+    if (containers.length === 0) return;
+
+    // Respect reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    containers.forEach((container) => this.createParticles(container));
+  }
+
+  createParticles(container) {
+    const count = parseInt(container.dataset.particles, 10) || 12;
+    const color = container.dataset.particleColor || 'rgba(196, 169, 98, 0.3)';
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'particles-container';
+    wrapper.setAttribute('aria-hidden', 'true');
+
+    for (let i = 0; i < count; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+
+      const size = 3 + Math.random() * 5;
+      const x = Math.random() * 100;
+      const y = Math.random() * 100;
+      const duration = 6 + Math.random() * 8;
+      const delay = Math.random() * duration;
+      const driftX = -30 + Math.random() * 60;
+      const driftY = -40 - Math.random() * 80;
+      const maxOpacity = 0.15 + Math.random() * 0.35;
+
+      particle.style.cssText = `
+        width: ${size}px;
+        height: ${size}px;
+        left: ${x}%;
+        top: ${y}%;
+        background: ${color};
+        --duration: ${duration}s;
+        --delay: ${delay}s;
+        --drift-x: ${driftX}px;
+        --drift-y: ${driftY / 2}px;
+        --drift-x-end: ${driftX * 0.7}px;
+        --drift-y-end: ${driftY}px;
+        --max-opacity: ${maxOpacity};
+      `;
+
+      wrapper.appendChild(particle);
+    }
+
+    container.style.position = container.style.position || 'relative';
+    container.appendChild(wrapper);
+  }
+}
+
+// ============================================
 // SMOOTH SCROLL
 // ============================================
 class SmoothScroll {
@@ -565,6 +627,9 @@ document.addEventListener('DOMContentLoaded', () => {
   new SmoothScroll();
   new CounterAnimation();
   new LazyBackground();
+
+  // Ambient effects
+  new FloatingParticles();
 });
 
 // ============================================

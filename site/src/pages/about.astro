@@ -8,10 +8,10 @@ import SmartBookButton from '../components/booking/SmartBookButton.astro';
   description="Meet Virginia, Kim, and Alyssa - over 40 years combined experience bringing out your best look in Rolesville, NC."
 >
   <!-- Hero -->
-  <section class="pt-20 pb-28 px-6 relative overflow-hidden">
+  <section class="pt-20 pb-28 px-6 relative overflow-hidden" data-particles="6" data-particle-color="rgba(196, 169, 98, 0.15)">
     <!-- Ambient decoration -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-[--color-gold]/5 blur-3xl"></div>
-    <div class="max-w-4xl mx-auto text-center relative">
+    <div class="max-w-4xl mx-auto text-center relative" data-reveal>
       <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-4 block">Our Story</span>
       <h1 class="display-lg mb-8" style="font-family: var(--font-display);">
         Meet Your Stylists
@@ -27,7 +27,7 @@ import SmartBookButton from '../components/booking/SmartBookButton.astro';
     <div class="max-w-7xl mx-auto">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <!-- Image -->
-        <div class="img-frame aspect-square bg-[--color-cream-dark]" data-tilt="5">
+        <div class="img-frame aspect-square bg-[--color-cream-dark]" data-tilt="5" data-reveal="left">
           <img
             src="/images/virginia.jpg"
             alt="Virginia Page Watkins"
@@ -36,7 +36,7 @@ import SmartBookButton from '../components/booking/SmartBookButton.astro';
         </div>
 
         <!-- Content -->
-        <div class="max-w-xl">
+        <div class="max-w-xl" data-reveal="right">
           <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-4 block">Owner & Stylist</span>
           <h2 class="text-4xl lg:text-5xl mb-6" style="font-family: var(--font-display);">
             Virginia Page Watkins
@@ -78,7 +78,7 @@ import SmartBookButton from '../components/booking/SmartBookButton.astro';
     <div class="max-w-7xl mx-auto">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <!-- Content (order swapped on desktop) -->
-        <div class="max-w-xl lg:order-1 order-2">
+        <div class="max-w-xl lg:order-1 order-2" data-reveal="left">
           <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-4 block">Stylist</span>
           <h2 class="text-4xl lg:text-5xl mb-6" style="font-family: var(--font-display);">
             Kim Latham
@@ -103,7 +103,7 @@ import SmartBookButton from '../components/booking/SmartBookButton.astro';
         </div>
 
         <!-- Image -->
-        <div class="img-frame aspect-square bg-[--color-blush] lg:order-2 order-1" data-tilt="5">
+        <div class="img-frame aspect-square bg-[--color-blush] lg:order-2 order-1" data-tilt="5" data-reveal="right">
           <img
             src="/images/kim.jpg"
             alt="Kim Latham"
@@ -119,7 +119,7 @@ import SmartBookButton from '../components/booking/SmartBookButton.astro';
     <div class="max-w-7xl mx-auto">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <!-- Image -->
-        <div class="img-frame aspect-square bg-[--color-cream-dark]" data-tilt="5">
+        <div class="img-frame aspect-square bg-[--color-cream-dark]" data-tilt="5" data-reveal="left">
           <img
             src="/images/alyssa.jpg"
             alt="Alyssa, Color Specialist at Virginia Page & Co."
@@ -128,7 +128,7 @@ import SmartBookButton from '../components/booking/SmartBookButton.astro';
         </div>
 
         <!-- Content -->
-        <div class="max-w-xl">
+        <div class="max-w-xl" data-reveal="right">
           <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-4 block">Color Specialist</span>
           <h2 class="text-4xl lg:text-5xl mb-6" style="font-family: var(--font-display);">
             Alyssa
@@ -215,11 +215,11 @@ import SmartBookButton from '../components/booking/SmartBookButton.astro';
   </section>
 
   <!-- Our Story -->
-  <section class="py-32 px-6 bg-[--color-cream-dark] relative overflow-hidden">
+  <section class="py-32 px-6 bg-[--color-cream-dark] relative overflow-hidden" data-particles="8" data-particle-color="rgba(196, 169, 98, 0.18)">
     <!-- Ambient decoration -->
     <div class="absolute top-1/4 left-0 w-64 h-64 rounded-full bg-[--color-gold]/5 blur-3xl"></div>
     <div class="absolute bottom-1/4 right-0 w-64 h-64 rounded-full bg-[--color-gold]/5 blur-3xl"></div>
-    <div class="max-w-4xl mx-auto text-center relative">
+    <div class="max-w-4xl mx-auto text-center relative" data-reveal>
       <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-4 block">Since 2020</span>
       <h2 class="display-md mb-10" style="font-family: var(--font-display);">
         Our Story
