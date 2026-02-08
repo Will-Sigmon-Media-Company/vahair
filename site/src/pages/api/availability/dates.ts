@@ -4,6 +4,9 @@
  */
 
 import type { APIRoute } from 'astro';
+
+// Ensure this endpoint is deployed as a serverless function (not prerendered to a static file).
+export const prerender = false;
 import {
   getAvailableDates,
   isAcuityConfigured,
