@@ -124,6 +124,32 @@ a.back-link:hover {
   color: #2D2A26 !important;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   FRIENDLY COPY OVERRIDES (Visual only)
+   ─────────────────────────────────────────────────────────────────────────────
+
+   Acuity doesn't provide a reliable way to rename some UI headings in the embed.
+   These overrides *visually* replace generic copy while leaving the underlying
+   text intact for screen readers and internal Acuity logic.
+
+   Target: the top step heading (e.g. “Select Appointment”, “Select Date & Time”).
+*/
+
+/* Keep original text in DOM, but show friendlier label visually */
+#pylon-nav .step-title h2 {
+  position: relative !important;
+  color: transparent !important;
+}
+
+#pylon-nav .step-title h2::after {
+  content: 'Schedule Your Visit' !important;
+  color: #2D2A26 !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+}
+
 /* Progress indicator */
 .progress-steps {
   margin-bottom: 2rem !important;
