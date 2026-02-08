@@ -3,6 +3,7 @@
  * Smart booking button that shows next available slot
  */
 import NextSlotBadge from '../availability/NextSlotBadge.astro';
+import { acuityBookingUrlForCalendar } from '../../lib/acuity';
 
 interface Props {
   calendarId: number;
@@ -20,7 +21,7 @@ const {
   showAvailability = true,
 } = Astro.props;
 
-const bookingUrl = `https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=${calendarId}`;
+const bookingUrl = acuityBookingUrlForCalendar(calendarId);
 
 const variantClasses = {
   primary: 'btn btn-primary',

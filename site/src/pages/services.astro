@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { acuityBookingUrlForCalendar, acuityBookingUrlForCategory } from '../lib/acuity';
 
 const haircuts = [
   { name: "Women's Haircut", price: "$50" },
@@ -108,7 +109,7 @@ const alyssaExtensions = [
 
       <div class="mt-10">
         <a
-          href="https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Haircuts"
+          href={acuityBookingUrlForCategory('Haircuts')}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Book a Haircut (opens in new window)"
@@ -146,7 +147,7 @@ const alyssaExtensions = [
 
       <div class="mt-10">
         <a
-          href="https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Color"
+          href={acuityBookingUrlForCategory('Color')}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Book Color Service (opens in new window)"
@@ -180,7 +181,7 @@ const alyssaExtensions = [
 
       <div class="mt-10">
         <a
-          href="https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Extras"
+          href={acuityBookingUrlForCategory('Extras')}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Book Extras (opens in new window)"
@@ -267,7 +268,7 @@ const alyssaExtensions = [
 
       <div class="mt-10">
         <a
-          href="https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=13484805"
+          href={acuityBookingUrlForCalendar(13484805)}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Book with Alyssa (opens in new window)"

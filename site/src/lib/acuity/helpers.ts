@@ -10,9 +10,10 @@ import type {
   Stylist,
   NextSlot,
 } from './types';
-
-/** Acuity scheduler base URL - Standalone account */
-const ACUITY_BASE_BOOKING_URL = 'https://app.acuityscheduling.com/schedule.php?owner=38274584';
+import {
+  acuityBookingUrlForAppointmentType,
+  acuityBookingUrlForCalendar,
+} from './constants';
 
 /**
  * Salon timezone (Rolesville, NC).
@@ -136,21 +137,52 @@ export function transformCalendar(calendar: AcuityCalendar): Stylist {
     name: calendar.name,
     image: image || PLACEHOLDER_IMAGE,
     description: calendar.description || '',
-    bookingUrl: `${ACUITY_BASE_BOOKING_URL}&calendarID=${calendar.id}`,
+    bookingUrl: acuityBookingUrlForCalendar(calendar.id),
   };
 }
 
 /** Transform Acuity appointment type to Service */
 export function transformAppointmentType(apt: AcuityAppointmentType): Service {
+  const normalizedName = apt.name.trim().replace(/\s+/g, ' ');
+  const normalizedCategory = normalizeCategoryName(apt.category);
+
   return {
     id: apt.id,
-    name: apt.name,
+    name: normalizedName,
     description: apt.description || '',
     duration: apt.duration,
     price: apt.price ? `$${apt.price}` : 'Consultation',
-    category: apt.category || 'Other',
-    bookingUrl: apt.schedulingUrl || `${ACUITY_BASE_BOOKING_URL}&appointmentType=${apt.id}`,
+    category: normalizedCategory,
+    bookingUrl: apt.schedulingUrl || acuityBookingUrlForAppointmentType(apt.id),
+    calendarIds: Array.isArray(apt.calendarIDs) ? apt.calendarIDs : [],
   };
+}
+
+function normalizeCategoryName(category: string | null | undefined): string {
+  const raw = (category ?? '').trim().replace(/\s+/g, ' ');
+  if (!raw) return 'Other';
+
+  // Canonical names we use in the site UI.
+  const canonical = ['Haircuts', 'Color', 'Extras', 'Other', 'Consultation'] as const;
+
+  // Exact match (case-insensitive)
+  const exact = canonical.find((c) => c.toLowerCase() === raw.toLowerCase());
+  if (exact) return exact;
+
+  // Handle Acuity categories that were created during migration with a stylist prefix like:
+  // - "Alyssa Color"
+  // - "Virginia Haircuts"
+  // - "Kim Extras"
+  //
+  // We keep the "real" category keyword, since that's what we want the user to see.
+  const contained = canonical.find((c) => new RegExp(`\\b${escapeRegExp(c)}\\b`, 'i').test(raw));
+  if (contained) return contained;
+
+  return raw;
+}
+
+function escapeRegExp(text: string): string {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 /** Group services by category */
@@ -167,7 +199,7 @@ export function groupServicesByCategory(services: Service[]): ServiceCategory[] 
   const categories: ServiceCategory[] = [];
 
   // Define preferred order
-  const order = ['Haircuts', 'Color', 'Waxing', 'Other'];
+  const order = ['Haircuts', 'Color', 'Extras', 'Other'];
 
   order.forEach((categoryName) => {
     const services = categoryMap.get(categoryName);

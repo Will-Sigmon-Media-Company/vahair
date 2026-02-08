@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getAllStylists } from '../lib/data/stylists';
+import { ACUITY_EMBED_BASE_URL, ACUITY_EMBED_JS_URL } from '../lib/acuity';
 
 // Use centralized stylist data
 const stylists = getAllStylists();
@@ -14,7 +15,7 @@ const stylists = getAllStylists();
     <link rel="preconnect" href="https://embed.acuityscheduling.com" />
     <link rel="dns-prefetch" href="https://embed.acuityscheduling.com" />
     <link rel="preconnect" href="https://app.acuityscheduling.com" />
-    <script src="https://embed.acuityscheduling.com/js/embed.js" defer></script>
+    <script src={ACUITY_EMBED_JS_URL} defer></script>
   </Fragment>
 
   <!-- Compact Hero -->
@@ -131,7 +132,7 @@ const stylists = getAllStylists();
       <div class="acuity-container relative">
         <iframe
           id="acuity-embed"
-          src="https://app.acuityscheduling.com/schedule.php?owner=38274584&showHeader=false"
+          src={ACUITY_EMBED_BASE_URL}
           title="Schedule Appointment with Virginia Page & Co. Hair Studio"
           width="100%"
           frameBorder="0"
@@ -156,6 +157,11 @@ const stylists = getAllStylists();
       all: '',
       ...Object.fromEntries(stylists.map((s) => [s.name.toLowerCase(), String(s.id)])),
     })}
+  </script>
+
+  <!-- Single source of truth for the Acuity embed base URL -->
+  <script type="application/json" id="acuity-base-url">
+    {JSON.stringify(ACUITY_EMBED_BASE_URL)}
   </script>
 
   <!-- Info Cards with icons -->
@@ -361,7 +367,7 @@ const stylists = getAllStylists();
   // Handle stylist filter selection
   function updateScheduler(stylistKey: string) {
     const calendarId = CALENDARS[stylistKey] || '';
-    const baseUrl = 'https://app.acuityscheduling.com/schedule.php?owner=38274584&showHeader=false';
+    const baseUrl = JSON.parse(document.getElementById('acuity-base-url')!.textContent || '\"\"');
     const newUrl = calendarId ? `${baseUrl}&calendarID=${calendarId}` : baseUrl;
 
     if (iframe) {

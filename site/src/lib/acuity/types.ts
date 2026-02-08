@@ -84,6 +84,8 @@ export interface Service {
   price: string;
   category: string;
   bookingUrl: string;
+  /** Which stylists (calendars) can perform this service (from Acuity `calendarIDs`). */
+  calendarIds?: number[];
 }
 
 /** API Response wrapper */

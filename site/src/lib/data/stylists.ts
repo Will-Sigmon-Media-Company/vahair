@@ -3,6 +3,8 @@
  * Used by pages, API fallbacks, and components
  */
 
+import { acuityBookingUrlForCalendar } from '../acuity';
+
 export interface Stylist {
   id: number;
   name: string;
@@ -27,7 +29,7 @@ export const STYLISTS: Stylist[] = [
     role: 'Owner & Stylist',
     experience: '17 years of experience',
     imagePosition: 'object-[center_20%]',
-    bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=13484734',
+    bookingUrl: acuityBookingUrlForCalendar(13484734),
   },
   {
     id: 13484780,
@@ -37,7 +39,7 @@ export const STYLISTS: Stylist[] = [
     role: 'Stylist',
     experience: '20 years of experience',
     imagePosition: 'object-[center_25%]',
-    bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=13484780',
+    bookingUrl: acuityBookingUrlForCalendar(13484780),
   },
   {
     id: 13484805,
@@ -47,7 +49,7 @@ export const STYLISTS: Stylist[] = [
     role: 'Color Specialist',
     experience: '6 years of experience',
     imagePosition: 'object-[center_15%]',
-    bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=13484805',
+    bookingUrl: acuityBookingUrlForCalendar(13484805),
   },
 ];
 

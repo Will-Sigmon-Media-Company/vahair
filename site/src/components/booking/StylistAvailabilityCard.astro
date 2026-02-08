@@ -4,6 +4,7 @@
  * Shows real-time availability with beautiful hover effects
  */
 import NextSlotBadge from '../availability/NextSlotBadge.astro';
+import { ACUITY_BASE_SCHEDULE_URL } from '../../lib/acuity';
 
 interface Props {
   id: number;
@@ -24,6 +25,7 @@ const {
 } = Astro.props;
 
 const stylistKey = name.toLowerCase();
+const acuityBaseScheduleUrl = ACUITY_BASE_SCHEDULE_URL;
 ---
 
 <button
@@ -108,7 +110,8 @@ const stylistKey = name.toLowerCase();
           loader.style.display = 'flex';
           loader.style.opacity = '1';
         }
-        iframe.src = `https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=${calendarId}`;
+        const baseUrl = {JSON.stringify(acuityBaseScheduleUrl)};
+        iframe.src = `${baseUrl}&calendarID=${calendarId}`;
       }
 
       // Update filter pills if they exist

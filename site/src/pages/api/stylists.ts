@@ -4,9 +4,7 @@
  */
 
 import type { APIRoute } from 'astro';
-
-// Ensure this endpoint is deployed as a serverless function (not prerendered to a static file).
-export const prerender = false;
+import { rateLimit } from '../../lib/api/rateLimit';
 import {
   getCalendars,
   isAcuityConfigured,
@@ -18,6 +16,9 @@ import {
   type ApiResponse,
 } from '../../lib/acuity';
 import { STYLISTS } from '../../lib/data/stylists';
+
+// Ensure this endpoint is deployed as a serverless function (not prerendered to a static file).
+export const prerender = false;
 
 // CORS and security headers for API responses
 const corsHeaders = {
@@ -42,7 +43,27 @@ const fallbackStylists: Stylist[] = STYLISTS.map(s => ({
   bookingUrl: s.bookingUrl,
 }));
 
-export const GET: APIRoute = async () => {
+export const GET: APIRoute = async ({ request }) => {
+  // Best-effort abuse protection (per-instance on serverless)
+  const rl = rateLimit(request, {
+    key: 'api:stylists',
+    limit: 120,
+    windowMs: 60_000,
+  });
+
+  if (!rl.allowed) {
+    return new Response(JSON.stringify({ error: 'Too many requests' }), {
+      status: 429,
+      headers: {
+        ...corsHeaders,
+        'Retry-After': String(rl.retryAfterSeconds ?? 60),
+        'X-RateLimit-Limit': String(rl.limit),
+        'X-RateLimit-Remaining': String(rl.remaining),
+        'X-RateLimit-Reset': String(Math.ceil(rl.resetAtMs / 1000)),
+      },
+    });
+  }
+
   try {
     if (!isAcuityConfigured()) {
       return new Response(

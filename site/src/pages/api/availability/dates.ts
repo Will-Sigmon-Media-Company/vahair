@@ -4,9 +4,7 @@
  */
 
 import type { APIRoute } from 'astro';
-
-// Ensure this endpoint is deployed as a serverless function (not prerendered to a static file).
-export const prerender = false;
+import { rateLimit } from '../../../lib/api/rateLimit';
 import {
   getAvailableDates,
   isAcuityConfigured,
@@ -17,6 +15,9 @@ import {
   type AcuityAvailabilityDate,
   type ApiResponse,
 } from '../../../lib/acuity';
+
+// Ensure this endpoint is deployed as a serverless function (not prerendered to a static file).
+export const prerender = false;
 
 // CORS and security headers for API responses
 const corsHeaders = {
@@ -32,7 +33,7 @@ export const OPTIONS: APIRoute = () => {
   return new Response(null, { status: 204, headers: corsHeaders });
 };
 
-export const GET: APIRoute = async ({ url }) => {
+export const GET: APIRoute = async ({ request, url }) => {
   const calendarId = url.searchParams.get('calendarId');
   const appointmentTypeId = url.searchParams.get('appointmentTypeId');
   const month = url.searchParams.get('month') || getCurrentMonth();
@@ -67,6 +68,26 @@ export const GET: APIRoute = async ({ url }) => {
       JSON.stringify({ error: 'Invalid calendarId or appointmentTypeId' }),
       { status: 400, headers: corsHeaders }
     );
+  }
+
+  // Best-effort abuse protection (per-instance on serverless)
+  const rl = rateLimit(request, {
+    key: 'api:availability:dates',
+    limit: 240,
+    windowMs: 60_000,
+  });
+
+  if (!rl.allowed) {
+    return new Response(JSON.stringify({ error: 'Too many requests' }), {
+      status: 429,
+      headers: {
+        ...corsHeaders,
+        'Retry-After': String(rl.retryAfterSeconds ?? 60),
+        'X-RateLimit-Limit': String(rl.limit),
+        'X-RateLimit-Remaining': String(rl.remaining),
+        'X-RateLimit-Reset': String(Math.ceil(rl.resetAtMs / 1000)),
+      },
+    });
   }
 
   if (!isAcuityConfigured()) {
