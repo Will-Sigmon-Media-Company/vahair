@@ -28,11 +28,12 @@
 | **Kim Calendar ID** | `13484780` |
 | **Alyssa Calendar ID** | `13484805` |
 | **ACUITY_USER_ID** | `38274584` |
-| **ACUITY_API_KEY** | `1d51bbb6101e887799f6fba080751b76` |
+| **ACUITY_API_KEY** | `REDACTED` |
 | **Account Type** | Standalone |
 
 ---
 
+> **Security note:** API keys must not be stored in git (including docs). If an API key was ever committed,\n+> rotate it in Acuity immediately and update Vercel/env vars.\n+\n ## Phase 1: Acuity Account Setup (User Action)
 ## Phase 1: Acuity Account Setup (User Action)
 
 ### Step 1: Create New Account

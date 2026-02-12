@@ -24,6 +24,12 @@ vahair/
 │   ├── services.md        # Complete service list & pricing
 │   ├── contact.md         # Contact info & hours
 │   └── appointments.md    # Booking info & policies
+├── docs/
+│   ├── ACUITY-MIGRATION.md         # Migration checklist (Squarespace -> standalone)
+│   ├── acuity-migration-state.md   # Appointment-type migration state
+│   └── booking-ops.md              # Runbook: audits, mixups, reconciliation
+├── scripts/
+│   └── acuity-audit-appointments.mjs  # Local audit script (prints/exports booked appts)
 ├── technical/
 │   ├── acuity-integration.md  # How to embed Acuity
 │   ├── seo-metadata.md        # Meta tags, titles, descriptions
