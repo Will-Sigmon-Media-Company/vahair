@@ -5,6 +5,10 @@
 
 import { acuityBookingUrlForCalendar } from '../acuity';
 
+/** Calculate years since a start year */
+const yearsSince = (startYear: number) =>
+  `${new Date().getFullYear() - startYear} years of experience`;
+
 export interface Stylist {
   id: number;
   name: string;
@@ -27,7 +31,7 @@ export const STYLISTS: Stylist[] = [
     fullName: 'Virginia Page Watkins',
     image: '/images/virginia.jpg',
     role: '',
-    experience: '17 years of experience',
+    experience: yearsSince(2009),
     imagePosition: 'object-[center_20%]',
     bookingUrl: acuityBookingUrlForCalendar(13484734),
   },

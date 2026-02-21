@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SmartBookButton from '../components/booking/SmartBookButton.astro';
+
+const virginiaYears = new Date().getFullYear() - 2009;
 ---
 
 <Layout
@@ -43,7 +45,7 @@ import SmartBookButton from '../components/booking/SmartBookButton.astro';
           <div class="divider mb-8"></div>
 
           <p class="text-[var(--color-taupe)] text-lg leading-relaxed mb-6">
-            Virginia has been doing hair for 17 years, starting her career at age 19 at Mitchell's Hairstyling in Raleigh. Today, she owns her own salon in her hometown of Rolesville.
+            Virginia has been doing hair for {virginiaYears} years, starting her career at age 19 at Mitchell's Hairstyling in Raleigh. Today, she owns her own salon in her hometown of Rolesville.
           </p>
 
           <p class="text-[var(--color-taupe)] text-lg leading-relaxed mb-8">
