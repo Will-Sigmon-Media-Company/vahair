@@ -5,6 +5,8 @@ const navLinks = [
   { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
 ];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
@@ -26,15 +28,21 @@ const navLinks = [
         {navLinks.map(link => (
           <a
             href={link.href}
-            class="text-sm tracking-widest uppercase link-underline opacity-80 hover:opacity-100 hover:text-[var(--color-gold)] transition-all duration-300"
+            class:list={[
+              "text-sm tracking-widest uppercase link-underline transition-all duration-300",
+              currentPath === link.href ? "opacity-100 text-[var(--color-gold)]" : "opacity-80 hover:opacity-100 hover:text-[var(--color-gold)]"
+            ]}
+            aria-current={currentPath === link.href ? "page" : undefined}
           >
             {link.label}
           </a>
         ))}
       </div>
-      <a href="/book" class="btn btn-primary btn-header-cta hover:shadow-[0_0_25px_rgba(196,169,98,0.35)] transition-shadow duration-300">
-        Book Now
-      </a>
+      {currentPath !== '/book' && (
+        <a href="/book" class="btn btn-primary btn-header-cta hover:shadow-[0_0_25px_rgba(196,169,98,0.35)] transition-shadow duration-300">
+          Book Now
+        </a>
+      )}
     </div>
 
     <!-- Mobile Menu Button (44x44 minimum touch target for accessibility) -->
@@ -57,15 +65,21 @@ const navLinks = [
     {navLinks.map(link => (
       <a
         href={link.href}
-        class="block text-4xl mb-6 tracking-wide hover:text-[var(--color-gold)] transition-colors"
+        class:list={[
+          "block text-4xl mb-6 tracking-wide transition-colors",
+          currentPath === link.href ? "text-[var(--color-gold)]" : "hover:text-[var(--color-gold)]"
+        ]}
         style="font-family: var(--font-display);"
+        aria-current={currentPath === link.href ? "page" : undefined}
       >
         {link.label}
       </a>
     ))}
-    <a href="/book" class="btn btn-primary mt-8">
-      Book Now
-    </a>
+    {currentPath !== '/book' && (
+      <a href="/book" class="btn btn-primary mt-8">
+        Book Now
+      </a>
+    )}
   </nav>
 </div>
 
@@ -108,7 +122,7 @@ const navLinks = [
   .btn-header-cta {
     padding: 0.9rem 2.1rem;
   }
-  
+
   #mobile-menu {
     position: fixed;
     top: 0;
@@ -131,11 +145,11 @@ const navLinks = [
     visibility: visible;
     pointer-events: auto;
   }
-  
+
   #mobile-menu-btn.active .menu-line:first-child {
     transform: rotate(45deg) translate(2px, 2px);
   }
-  
+
   #mobile-menu-btn.active .menu-line:last-child {
     transform: rotate(-45deg) translate(2px, -2px);
   }
@@ -151,7 +165,7 @@ const navLinks = [
       header?.classList.remove('scrolled');
     }
   });
-  
+
   // Mobile menu with accessibility support
   const menuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');

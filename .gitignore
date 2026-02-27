@@ -31,3 +31,4 @@ output/
 .playwright-cli/
 .playwright-mcp/
 site/test-results/
+.claude/
