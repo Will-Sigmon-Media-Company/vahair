@@ -79,7 +79,11 @@ const currentYear = new Date().getFullYear();
   <div class="border-t border-[var(--color-charcoal-light)]">
     <div class="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-[var(--color-taupe)]">
       <p>&copy; {currentYear} Virginia Page & Co. Hair Studio</p>
-      <p class="text-xs">Rolesville, North Carolina</p>
+      <div class="flex items-center gap-4 text-xs">
+        <a href="/privacy" class="hover:text-[--color-gold] transition-colors">Privacy Policy</a>
+        <span class="text-[--color-charcoal-light]">|</span>
+        <a href="/terms" class="hover:text-[--color-gold] transition-colors">Terms of Service</a>
+      </div>
     </div>
   </div>
 </footer>

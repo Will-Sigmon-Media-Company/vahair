@@ -70,28 +70,28 @@ const stylists = getAllStylists();
           </h3>
           <div class="grid gap-3">
             <button type="button" class="service-choice" data-service="haircut">
-              <span class="choice-icon">✂️</span>
+              <span class="choice-icon">&#x2702;&#xFE0F;</span>
               <span class="choice-text">
                 <strong>Haircut or Styling</strong>
                 <small>Cut, trim, blowout, or special occasion</small>
               </span>
             </button>
             <button type="button" class="service-choice" data-service="color">
-              <span class="choice-icon">🎨</span>
+              <span class="choice-icon">&#x1F3A8;</span>
               <span class="choice-text">
                 <strong>Color Services</strong>
                 <small>Highlights, balayage, all-over color</small>
               </span>
             </button>
             <button type="button" class="service-choice" data-service="both">
-              <span class="choice-icon">💇‍♀️</span>
+              <span class="choice-icon">&#x1F487;&#x200D;&#x2640;&#xFE0F;</span>
               <span class="choice-text">
                 <strong>Both Cut & Color</strong>
                 <small>Full transformation</small>
               </span>
             </button>
             <button type="button" class="service-choice" data-service="treatment">
-              <span class="choice-icon">✨</span>
+              <span class="choice-icon">&#x2728;</span>
               <span class="choice-text">
                 <strong>Treatment</strong>
                 <small>Brazilian blowout, deep conditioning</small>
@@ -99,7 +99,7 @@ const stylists = getAllStylists();
             </button>
           </div>
           <button type="button" id="close-questionnaire" class="mt-4 text-sm text-[var(--color-taupe)] hover:text-[var(--color-gold)] transition-colors">
-            ← Back to all stylists
+            &larr; Back to all stylists
           </button>
         </div>
       </div>
@@ -109,7 +109,7 @@ const stylists = getAllStylists();
         <div class="max-w-md mx-auto bg-gradient-to-br from-[var(--color-gold)]/5 to-[var(--color-blush)]/5 rounded-2xl shadow-lg p-6 border border-[var(--color-gold)]/20">
           <div class="text-center">
             <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--color-gold)]/10 flex items-center justify-center">
-              <span class="text-2xl" id="rec-icon">⭐</span>
+              <span class="text-2xl" id="rec-icon">&#x2B50;</span>
             </div>
             <p class="text-sm text-[var(--color-taupe)] mb-2">We recommend</p>
             <h3 id="rec-name" class="text-2xl font-semibold mb-2" style="font-family: var(--font-display);">Virginia</h3>
@@ -148,6 +148,9 @@ const stylists = getAllStylists();
           </div>
         </div>
       </div>
+      <p class="text-center text-sm text-[--color-taupe] mt-4">
+        Having trouble with the scheduler? Call us directly at <a href="tel:9196718353" class="text-[--color-gold] hover:underline">(919) 671-8353</a>
+      </p>
     </div>
   </section>
 
@@ -367,7 +370,7 @@ const stylists = getAllStylists();
   // Handle stylist filter selection
   function updateScheduler(stylistKey: string) {
     const calendarId = CALENDARS[stylistKey] || '';
-    const baseUrl = JSON.parse(document.getElementById('acuity-base-url')!.textContent || '\"\"');
+    const baseUrl = JSON.parse(document.getElementById('acuity-base-url')!.textContent || '""');
     const newUrl = calendarId ? `${baseUrl}&calendarID=${calendarId}` : baseUrl;
 
     if (iframe) {
@@ -423,25 +426,25 @@ const stylists = getAllStylists();
     haircut: {
       name: 'Kim',
       key: 'kim',
-      icon: '✂️',
+      icon: '\u2702\uFE0F',
       reason: '20 years of experience crafting the perfect cut'
     },
     color: {
       name: 'Alyssa',
       key: 'alyssa',
-      icon: '🎨',
+      icon: '\uD83C\uDFA8',
       reason: 'Our color specialist with an eye for stunning results'
     },
     both: {
       name: 'Virginia',
       key: 'virginia',
-      icon: '💫',
+      icon: '\uD83D\uDCAB',
       reason: 'Owner & master stylist for your full transformation'
     },
     treatment: {
       name: 'Virginia',
       key: 'virginia',
-      icon: '✨',
+      icon: '\u2728',
       reason: 'Expert in Brazilian blowouts and treatments'
     }
   };

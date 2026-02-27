@@ -147,14 +147,90 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- Map -->
+  <!-- Contact Form -->
   <section class="py-20 px-6 bg-[var(--color-cream-dark)]">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-xs tracking-widest uppercase text-[var(--color-gold)] mb-4 block">Send a Message</span>
+        <h2 class="text-3xl mb-4" style="font-family: var(--font-display);">
+          Drop Us a Line
+        </h2>
+        <p class="text-[var(--color-taupe)]">
+          Have a question? We'll get back to you as soon as possible.
+        </p>
+      </div>
+
+      <form id="contact-form" class="space-y-6">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <label for="name" class="block text-sm tracking-widest uppercase text-[var(--color-taupe)] mb-2">Name *</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full px-4 py-3 bg-white border border-[var(--color-blush)] text-[var(--color-charcoal)] focus:border-[var(--color-gold)] focus:outline-none transition-colors"
+              style="font-family: var(--font-body);"
+            />
+          </div>
+          <div>
+            <label for="email" class="block text-sm tracking-widest uppercase text-[var(--color-taupe)] mb-2">Email *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-3 bg-white border border-[var(--color-blush)] text-[var(--color-charcoal)] focus:border-[var(--color-gold)] focus:outline-none transition-colors"
+              style="font-family: var(--font-body);"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="phone" class="block text-sm tracking-widest uppercase text-[var(--color-taupe)] mb-2">Phone</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            class="w-full px-4 py-3 bg-white border border-[var(--color-blush)] text-[var(--color-charcoal)] focus:border-[var(--color-gold)] focus:outline-none transition-colors"
+            style="font-family: var(--font-body);"
+          />
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm tracking-widest uppercase text-[var(--color-taupe)] mb-2">Message *</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            class="w-full px-4 py-3 bg-white border border-[var(--color-blush)] text-[var(--color-charcoal)] focus:border-[var(--color-gold)] focus:outline-none transition-colors resize-vertical"
+            style="font-family: var(--font-body);"
+          ></textarea>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">
+            Send Message
+          </button>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+          <p class="text-xl text-[var(--color-gold)] mb-2" style="font-family: var(--font-display);">Message sent!</p>
+          <p class="text-[var(--color-taupe)]">Your email client should have opened. We'll get back to you soon.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Map -->
+  <section class="py-20 px-6">
     <div class="max-w-7xl mx-auto">
-      <div class="overflow-hidden" style="height: 500px;">
+      <div class="overflow-hidden aspect-video max-h-[450px]">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3231.8!2d-78.4577758!3d35.9232013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ac5f0c4f4e5d0d%3A0x0!2s104%20S%20Main%20St%2C%20Rolesville%2C%20NC%2027571!5e0!3m2!1sen!2sus!4v1"
           width="100%"
-          height="500"
+          height="100%"
           style="border:0; filter: grayscale(50%);"
           allowfullscreen=""
           loading="lazy"
@@ -184,4 +260,27 @@ import Layout from '../layouts/Layout.astro';
       </a>
     </div>
   </section>
+  <script>
+    const form = document.getElementById('contact-form');
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(form as HTMLFormElement);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const phone = formData.get('phone');
+      const message = formData.get('message');
+
+      const subject = encodeURIComponent(`Website Inquiry from ${name}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\n\nMessage:\n${message}`
+      );
+
+      window.location.href = `mailto:vacohairstudio@gmail.com?subject=${subject}&body=${body}`;
+
+      const successEl = document.getElementById('form-success');
+      if (successEl) {
+        successEl.classList.remove('hidden');
+      }
+    });
+  </script>
 </Layout>
