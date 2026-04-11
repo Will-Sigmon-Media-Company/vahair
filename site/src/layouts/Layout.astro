@@ -1,4 +1,6 @@
 ---
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -87,6 +89,8 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://vahair.studio');
 
     <!-- Page-specific head additions -->
     <slot name="head" />
+    <Analytics />
+    <SpeedInsights />
   </head>
   <body class="min-h-screen flex flex-col">
     <!-- Skip Navigation Link (Accessibility) -->
